@@ -1,0 +1,209 @@
+mag_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MagBundle:Default:index }
+
+
+annonceur_add:
+    path:       /annonceur/add
+    defaults:   { _controller: MagBundle:Formulaire:addAnnonceur }
+annonceur_fill:
+    path:       /annonceur/fill
+    defaults:   { _controller: MagBundle:Formulaire:annonceur }
+annonceur_save:
+    path:       /annonceur/save
+    defaults:   { _controller: MagBundle:Formulaire:saveAnnonceur }
+
+
+
+
+form_list:
+    path:       /form/list
+    defaults:   { _controller: MagBundle:Formulaire:list }
+form_delete:
+    path:       /form/delete/{id}
+    defaults:   { _controller: MagBundle:Formulaire:delete }
+form_delete2:
+    path:       /form/delete2/{id}
+    defaults:   { _controller: MagBundle:Formulaire:delete2 }
+form_delete3:
+    path:       /form/delete3/{id}
+    defaults:   { _controller: MagBundle:Formulaire:delete3 }
+form_delete4:
+    path:       /form/delete4/{id}
+    defaults:   { _controller: MagBundle:Formulaire:delete4 }
+
+
+
+published_list:
+    path:       /published/list
+    defaults:   { _controller: MagBundle:PublierArticle:list }
+published_edit:
+    path:       /published/edit/{id}
+    defaults:   { _controller: MagBundle:PublierArticle:edit }
+published_delete:
+    path:       /published/delete/{id}
+    defaults:   { _controller: MagBundle:PublierArticle:delete }
+
+
+
+
+contenu_add:
+    path:       /contenu/add
+    defaults:   { _controller: MagBundle:Article:Add }
+contenu_list:
+    path:       /contenu/list
+    defaults:   { _controller: MagBundle:Article:list }
+
+contenu_edit:
+    path:       /contenu/edit/{id}
+    defaults:   { _controller: MagBundle:Article:edit }
+
+contenu_delete:
+    path:       /contenu/delete/{id}
+    defaults:   { _controller: MagBundle:Article:delete }
+
+
+
+
+
+theme_add:
+    path:       /theme/add
+    defaults:   { _controller: MagBundle:Theme:add }
+
+theme_list:
+    path:       /theme/list
+    defaults:   {_controller: MagBundle:Theme:list}
+
+theme_edit:
+    path:       /theme/edit/{id}
+    defaults:   { _controller: MagBundle:Theme:edit }
+
+theme_delete:
+    path:       /theme/delete/{id}
+    defaults:   { _controller: MagBundle:Theme:delete }
+
+
+
+
+
+rubrique_add:
+    path:      /rubrique/add
+    defaults:  { _controller: MagBundle:Rubrique:Add }
+
+rubrique_add_test:
+    path:      /rubrique/test/{id}
+    defaults:  { _controller: MagBundle:Rubrique:test }
+
+rubrique_list:
+    path:       /rubrique/list
+    defaults:   {_controller: MagBundle:Rubrique:list}
+
+rubrique_edit:
+    path:      /rubrique/edit/{id}
+    defaults:  { _controller: MagBundle:Rubrique:edit }
+
+rubrique_delete:
+    path:       /rubrique/delete/{id}
+    defaults:   { _controller: MagBundle:Rubrique:delete }
+
+
+
+
+pro_add:
+    path:      /pro/add
+    defaults:  { _controller: MagBundle:Professionnel:add }
+
+pro_list:
+    path:      /pro/list
+    defaults:   {_controller: MagBundle:Professionnel:list}
+
+pro_edit:
+    path:      /pro/edit/{id}
+    defaults:  { _controller: MagBundle:Professionnel:edit }
+
+pro_delete:
+    path:      /pro/delete/{id}
+    defaults:   { _controller: MagBundle:Professionnel:delete }
+
+
+
+devenirpartenaire_add:
+    path:       /devenirpartenaire/add
+    defaults:   { _controller: MagBundle:Formulaire:addPartenaire }
+
+partenaires_add:
+    path:       /partenaires/add
+    defaults:   { _controller: MagBundle:Partenaires:add }
+
+partenaires_list:
+    path:       /partenaires/list
+    defaults:   {_controller: MagBundle:Partenaires:list}
+
+partenaires_edit:
+    path:       /partenaires/edit/{id}
+    defaults:   { _controller: MagBundle:Partenaires:edit }
+
+partenaires_delete:
+    path:       /partenaires/delete/{id}
+    defaults:   { _controller: MagBundle:Partenaires:delete }
+
+
+
+td_add:
+    path:       /description/add
+    defaults:   { _controller: MagBundle:TexteDesriptif:add }
+
+td_list:
+    path:       /description/list
+    defaults:   {_controller: MagBundle:TexteDesriptif:list}
+
+td_edit:
+    path:       /description/edit/{id}
+    defaults:   { _controller: MagBundle:TexteDesriptif:edit }
+
+td_delete:
+    path:       /description/delete/{id}
+    defaults:   { _controller: MagBundle:TexteDesriptif:delete }
+
+
+apropos_add:
+    path:       /apropos/add
+    defaults:   { _controller: MagBundle:Apropos:add }
+
+apropos_list:
+    path:       /apropos/list
+    defaults:   {_controller: MagBundle:Apropos:list}
+
+apropos_edit:
+    path:       /apropos/edit/{id}
+    defaults:   { _controller: MagBundle:Apropos:edit }
+
+apropos_delete:
+    path:       /apropos/delete/{id}
+    defaults:   { _controller: MagBundle:Apropos:delete }
+
+
+
+
+
+habillage_add_test:
+    path:      /habillage/test
+    defaults:  { _controller: MagBundle:Habillage:test }
+
+habillage_add:
+    path:       /habillage/add
+    defaults:   { _controller: MagBundle:Habillage:add }
+
+habillage_list:
+    path:       /habillage/list
+    defaults:   { _controller: MagBundle:Habillage:list }
+
+habillage_edit:
+    path:       /habillage/edit/{id}
+    defaults:   { _controller: MagBundle:Habillage:edit }
+
+habillage_delete:
+    path:       /habillage/delete/{id}
+    defaults:   { _controller: MagBundle:Habillage:delete }
+
+

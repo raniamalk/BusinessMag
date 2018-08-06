@@ -1,0 +1,281 @@
+<?php
+
+namespace BusinessMag\MagBundle\Entity;
+
+
+use BusinessMag\MagBundle\MagBundle;
+use BusinessMag\MagBundle\Entity\Theme;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Date;
+
+
+/**
+ * Article
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\ArticleRepository")
+ */
+class Article
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texteIntro", type="text")
+     */
+    private $texteIntro;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texteArticle", type="text")
+     *
+     */
+    private $texteArticle;
+
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     *
+     */
+    private $createdAt;
+
+
+    /**
+     * @var Theme
+     *
+     * @Assert\valid()
+     * @Assert\Type(type="MagBundle\Entity\Theme")
+     * @ORM\OneToOne(targetEntity="Theme")
+     * 
+     */
+
+    private $theme;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Article
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set texteIntro
+     *
+     * @param string $texteIntro
+     * @return Article
+     */
+    public function setTexteIntro($texteIntro)
+    {
+        $this->texteIntro = $texteIntro;
+
+        return $this;
+    }
+
+    /**
+     * Get texteIntro
+     *
+     * @return string
+     */
+    public function getTexteIntro()
+    {
+        return $this->texteIntro;
+    }
+
+
+    /**
+     * Set texteArticle
+     *
+     * @param string $texteArticle
+     * @return Article
+     */
+    public function setTexteArticle($texteArticle)
+    {
+        $this->texteArticle = $texteArticle;
+
+        return $this;
+    }
+
+    /**
+     * Get texteArticle
+     *
+     * @return string
+     */
+    public function getTexteArticle()
+    {
+        return $this->texteArticle;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */
+    private $path;
+    /**
+     * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
+     *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
+     *
+     */
+    public $file;
+    public function getUploadRootDir()
+    {
+        return __dir__.'/../../../../web/uploads';
+    }
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+    public function getAssetPath()
+    {
+        return 'uploads/'.$this->path;
+    }
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+        $this->oldFile = $this->getPath();
+        $this->updateAt = new \DateTime();
+        if (null !== $this->file)
+            $this->path = sha1(uniqid(mt_rand(),true)).'.'.$this->file->guessExtension();
+    }
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null !== $this->file) {
+            $this->file->move($this->getUploadRootDir(),$this->path);
+            unset($this->file);
+            if ($this->oldFile != null) unlink($this->tempFile);
+        }
+    }
+
+
+
+
+
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+    }
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (file_exists($this->tempFile)) unlink($this->tempFile);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * @param mixed $path
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    }
+
+
+
+
+
+
+
+}

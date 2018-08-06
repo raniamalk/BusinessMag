@@ -1,0 +1,54 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} A propos du site Business Mag {% endblock %}
+{% block body %}
+    <style>
+        #businessmag_magbundle_textedescriptif_description{
+            width: 100%;
+            height: 150px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+    </style>
+    <h3> A propos du site Business Mag </h3>
+{#        <div class="container">
+            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            {{ form_end(form) }}
+        </div>#}
+
+    <div class="container">
+
+        <form action="{{ path('apropos_add') }}" {{ form_enctype(form) }} method="POST" >
+            {{ form_widget(form) }}
+            <br><br>
+
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            {#<input class="btn btn-primary" type="submit" value="Enregistrer" />#}
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script>
+        CKEDITOR.replace( 'businessmag_magbundle_apropos[quiSommesNous]' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'businessmag_magbundle_apropos[mentionsLegales]' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'businessmag_magbundle_apropos[champsCGV]' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'businessmag_magbundle_apropos[champsCGU]' );
+    </script>
+
+{% endblock %}
+
+

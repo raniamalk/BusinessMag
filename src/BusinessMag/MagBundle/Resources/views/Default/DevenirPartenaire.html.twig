@@ -1,0 +1,20 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Ajout d'un Article {% endblock %}
+
+{% block body %}
+
+    <h3> Ajouter un Article </h3>
+
+    <div class="container">
+
+        <form action="{{ path('devenirpartenaire_add') }}" {{ form_enctype(form) }} method="POST" >
+            {{ form_widget(form) }}
+            <br><br>
+
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            {#<input class="btn btn-primary" type="submit" value="Enregistrer" />#}
+        </form>
+
+    </div>
+
+{% endblock %}

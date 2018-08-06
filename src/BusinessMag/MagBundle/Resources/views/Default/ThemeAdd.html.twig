@@ -1,0 +1,15 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Themes {% endblock %}
+{% block body %}
+    <h3> Theme </h3>
+        <div class="container">
+
+            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            {{ form_end(form) }}
+        </div>
+
+{% endblock %}
+
+

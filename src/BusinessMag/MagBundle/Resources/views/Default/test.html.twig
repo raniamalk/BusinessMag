@@ -1,0 +1,65 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Ajouter une rubrique {% endblock %}
+{#{% block test %} show me this {% endblock %}#}
+{% block body %}
+    <h3> creer une nouvelle rubrique</h3>
+
+
+    <form action="{{ path('rubrique_add_test',{'id':id}) }} " method="post" >
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>Ajouter </h2></div>
+            <div class="panel-body">
+
+                <div class="form-group col-xs-6">
+                    <div class="radio">
+                        <label><input type="radio" value="op1" name="optradio" checked>Option 1</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" value="op 2" name="optradio">Option 2</label>
+                    </div>
+                    <div class="radio disabled">
+                        <label><input type="radio" value="op 3" name="optradio" >Option 3</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+
+{#    {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+    {{ form_widget(form) }}
+    {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+    {{ form_end(form) }}#}
+
+
+{#    <div class="well">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        #}{# Les erreurs générales du formulaire. #}{#
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            #}{# Génération du label. #}{#
+            {{ form_label(form.nom, "Nom de la rubrique", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            #}{# Affichage des erreurs pour ce champ précis. #}{#
+            {{ form_errors(form.nom) }}
+
+            <div class="col-sm-4">
+                #}{# Génération de l'input. #}{#
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-sm-4">
+                {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+
+        </div>
+
+        #}{# Fermeture de la balise <form> du formulaire HTML #}{#
+        {{ form_end(form) }}
+    </div>#}
+{% endblock %}

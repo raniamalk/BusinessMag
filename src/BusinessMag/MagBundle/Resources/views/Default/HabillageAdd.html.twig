@@ -1,0 +1,88 @@
+{#{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Habillage {% endblock %}
+
+{% block body %}
+
+    <h3> Habillage </h3>
+
+    <div class="container">
+
+        <form action="{{ path('habillage_add') }}" {{ form_enctype(form) }} method="POST" >
+            {{ form_widget(form) }}
+            <br><br>
+
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            #}{#<input class="btn btn-primary" type="submit" value="Enregistrer" />#}{#
+        </form>
+
+    </div>
+
+{% endblock %}#}
+
+
+{#{% extends 'MagBundle::base.html.twig' %}#}
+{#{% block title %} Habillage {% endblock %}#}
+{#{% block test %} show me this {% endblock %}#}
+{% block body %}
+    {#<h3 xmlns="http://www.w3.org/1999/html"> Habillage </h3>#}
+
+
+    <form action="{{ path('habillage_add_test') }} " method="post" enctype="multipart/form-data" >
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>Ajouter </h2></div>
+            {#<div class="panel-body">#}
+
+            <div class="form-group col-xs-6">
+                <label for="inputdefault">Image :</label><br>
+                <input type="file" name="file" id="file" required>
+            </div>
+
+
+            <div class="form-group col-xs-6">
+                <label for="inputdefault">Type :</label><br>
+                <div class="radio">
+                    <label><input type="radio" value="Habillage" name="optradio" checked>Habillage</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" value="Bannière page d'accueil" name="optradio">Bannière page d'accueil</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" value="Bannière page thème" name="optradio" >Bannière page thème</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" value="Vignette page thème" name="optradio">Vignette page thème</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" value="Bannière page article" name="optradio">Bannière page article</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" value="Vignette page article" name="optradio">Vignette page article</label>
+                </div>
+            </div>
+
+            <div class="form-group col-xs-6">
+                <label for="inputdefault">Lien :</label><br>
+                <input class="form-control" id="inputdefault" name="lien" type="text" >
+            </div>
+            <label class="checkbox-inline">themes:<br>
+                {% for theme in themes %}
+
+                    <input  name="theme" type="checkbox" class="checkbox" value="{{ theme.id }}"/>&nbsp; &nbsp;{{ theme.nom }}
+                    <br>
+                {% endfor %}
+            </label>
+
+            {#</div>#}
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $('.checkbox').on('change', function() {
+            $('.checkbox').not(this).prop('checked', false);
+        });
+    </script>
+{% endblock %}

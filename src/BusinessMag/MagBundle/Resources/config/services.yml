@@ -1,0 +1,6 @@
+services:
+#    mag.example:
+#        class: BusinessMag\MagBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    # ...

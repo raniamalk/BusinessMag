@@ -1,0 +1,29 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Modification un Article {% endblock %}
+
+{% block body %}
+    <h3> Modifier un Article </h3>
+    <form action="{{ path('contenu_edit',{'id': ids }) }}" {{ form_enctype(form) }} method="POST" >
+        {{ form_widget(form) }}
+        <br>
+        <div class="clearfix">
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+
+            <a id="delbtn" class='btn btn-primary' role="button" href="{{ path('contenu_delete', { 'id': ids }) }}">Supprimer</a>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        CKEDITOR.replace( 'businessmag_magbundle_article[titre]' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'businessmag_magbundle_article[texteIntro]' );
+    </script>
+    <script>
+        CKEDITOR.replace( 'businessmag_magbundle_article[texteArticle]' );
+    </script>
+
+{% endblock %}

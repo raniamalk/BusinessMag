@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Devenir Annonceur</title>
+</head>
+<body>
+
+
+Nom : <br>
+<input class="annonceur" type="text" name="nom" id="nom" >
+<br>
+Fonction : <br>
+<input class="annonceur" type="text" name="fonction" id="fonction"><br>
+Telephone : <br>
+<input class="annonceur" type="text" name="telephone_perso" id="telephone_perso">
+<br>
+Email : <br>
+<input class="annonceur" type="email" name="email"  id="email">
+<br>
+Raison social : <br>
+<input class="annonceur" type="text" name="raisonSoc" id="raisonSoc">
+<br>
+Site Web : <br>
+<input class="annonceur" type="text" name="site" id="site">
+<br>
+Telephone : <br>
+<input class="annonceur" type="text" name="tel" id="tel">
+<br>
+Email : <br>
+<input class="annonceur" type="text" name="mail" id="mail">
+<br>
+<hr>
+Visibilité :<br>
+<input class="annonceur" type="checkbox" name="page_acc" id="page_acc" value="Page d'accueil" > Page d'accueil <br>
+<input class="annonceur" type="checkbox" name="habillage_acc" id="habillage_acc" value="Habillage"> Habillage
+<input class="annonceur" type="checkbox" name="banniere_acc" id="banniere_acc" value="Bannière"> Bannière <br>
+<hr>
+<input class="annonceur" type="checkbox" name="page_theme" id="page_theme" value="Page théme" > Page théme <br>
+<input class="annonceur" type="checkbox" name="banniere_theme" id="banniere_theme" value="Bannière"> Bannière
+<input class="annonceur" type="checkbox" name="vignette_theme" id="vignette_theme" value="Vignette"> Vignette <br>
+
+Sponsoriser un thème : <br>
+{% for theme in themes %}
+    <label class="checkbox-inline">
+        <input id="select" class="annonceur"  type="checkbox" name="themes_sponsor" id="themes_sponsor" value="{{ theme.nom }}"/>&nbsp; &nbsp;{{ theme.nom }}
+    </label><br>
+{% endfor %}
+<hr>
+<input class="annonceur" type="checkbox" name="page_article" id="page_article" value="Page article" > Page article <br>
+<input class="annonceur" type="checkbox" name="banniere_article" id="banniere_article"  value="Bannière"> Bannière
+<input class="annonceur" type="checkbox" name="vignette_article" id="vignette_article" value="Vignette"> Vignette <br>
+
+Choisir le thème de l'article :<br>
+{% for theme in themes %}
+    <label class="checkbox-inline">
+        <input id="select" class="annonceur"  type="checkbox" name="themes_article" id="themes_article" value="{{ theme.nom }}"/>&nbsp; &nbsp;{{ theme.nom }}
+    </label><br>
+{% endfor %}
+<br><br>
+<input type="submit" value="Envoyer" id="envoyer">
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script>
+
+
+    $('.annonceur').on('change ', function () {
+
+        $('.loaders').css('display','');
+        var nom=  $("#nom").val();
+        var fonction=  $("#fonction").val();
+        var telperso=  $("#telephone_perso").val();
+        console.log(telperso);
+        var emailperso=  $("#email").val();
+        var raisons=  $("#raisonSoc").val();
+        var siteweb=  $("#site").val();
+        var telpro=  $("#tel").val();
+        var emailpro=  $("#mail").val();
+        var page_acc = $('input[name=page_acc]:checked').val();
+        var habillage_acc = $('input[name=habillage_acc]:checked').val();
+        var banniere_acc = $('input[name=banniere_acc]:checked').val();
+        var page_theme = $('input[name=page_theme]:checked').val();
+        var banniere_theme = $('input[name=banniere_theme]:checked').val();
+        var vignette_theme = $('input[name=vignette_theme]:checked').val();
+
+        /*  var themes_sponsor = $('input[name=themes_sponsor]:checked').val();*/
+        var page_article = $('input[name=page_article]:checked').val();
+        var banniere_article = $('input[name=banniere_article]:checked').val();
+        var vignette_article = $('input[name=vignette_article]:checked').val();
+        /* var themes_article = $('input[name=themes_article]:checked').val();*/
+        var array_theme_sponsor =  new Array();
+        var array_array_theme_article =  new Array();
+        if (($("input[name=themes_sponsor]:checked")).each(function ()
+            { array_theme_sponsor.push($(this).val());  })) ;
+        if (($("input[name=themes_article]:checked")).each(function ()
+            { array_array_theme_article.push($(this).val());  })) ;
+
+
+        var data_send = {'nom': nom,'fonction':fonction,'telperso': telperso,'emailperso':emailperso,'raisons':raisons,
+            'siteweb': siteweb,'telpro':telpro,'emailpro': emailpro,'page_acc':page_acc,'habillage_acc':habillage_acc,
+            'banniere_acc': banniere_acc,'page_theme':page_theme,'banniere_theme': banniere_theme,
+            'vignette_theme':vignette_theme, 'themes_sponsor':array_theme_sponsor,'page_article': page_article,'banniere_article':banniere_article,
+            'vignette_article': vignette_article,'themes_article': array_array_theme_article};
+
+        $.ajax({
+            url: '{{ path('annonceur_fill') }}',
+            type: 'POST',
+            data: data_send,
+
+            statusCode: {
+                //traitement en cas de succès
+                200: function (response) {
+                    var successMessage = response;
+
+                    console.log(successMessage);
+                    /!*  $('#prestation').children("option").remove();*!/
+                    //on vide les champs formulaires ou on le supprime ou ...
+                    //on retire le loader...
+
+                    $('.loaders').css('display','none');
+
+//                    window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_affichage";
+                },
+                //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                412: function (response) {
+                    var errorsForm = response.responseJSON.formErrors;
+                    //on affiche les erreurs...
+                    alert('error');
+
+                }
+            }
+        });
+
+    })
+
+
+    $(document).on('click', '#envoyer', function (event) {
+        event.preventDefault();
+
+
+        var nom=  $("#nom").val();
+        var fonction=  $("#fonction").val();
+        var telperso=  $("#telephone").val();
+        var emailperso=  $("#email").val();
+        var raisons=  $("#raisonSoc").val();
+        var siteweb=  $("#site").val();
+        var telpro=  $("#tel").val();
+        var emailpro=  $("#mail").val();
+        var page_acc = $('input[name=page_acc]:checked').val();
+        var habillage_acc = $('input[name=habillage_acc]:checked').val();
+        var banniere_acc = $('input[name=banniere_acc]:checked').val();
+        var page_theme = $('input[name=page_theme]:checked').val();
+        var banniere_theme = $('input[name=banniere_theme]:checked').val();
+        var vignette_theme = $('input[name=vignette_theme]:checked').val();
+        var themes_sponsor = $('input[name=themes_sponsor]:checked').val();
+        var page_article = $('input[name=page_article]:checked').val();
+        var banniere_article = $('input[name=banniere_article]:checked').val();
+        var vignette_article = $('input[name=vignette_article]:checked').val();
+        var themes_article = $('input[name=themes_article]:checked').val();
+
+        var data_send = {'nom': nom,'fonction':fonction,'telperso': telperso,'emailperso':emailperso,'raisons':raisons,
+            'siteweb': siteweb,'telpro':telpro,'emailpro': emailpro,'page_acc':page_acc,'habillage_acc':habillage_acc,
+            'banniere_acc': banniere_acc,'page_theme':page_theme,'banniere_theme': banniere_theme,
+            'vignette_theme':vignette_theme, 'themes_sponsor':themes_sponsor,'page_article': page_article,'banniere_article':banniere_article,
+            'vignette_article': vignette_article,'themes_article': themes_article};
+
+
+        $.ajax({
+            url: '{{ path('annonceur_save') }}',
+            type: 'POST',
+            data: data_send,
+            statusCode: {
+                //traitement en cas de succès
+                200: function (response) {
+                    var successMessage = response;
+
+
+                    console.log(successMessage);
+                    /*  $('#prestation').children("option").remove();*/
+                    //on vide les champs formulaires ou on le supprime ou ...
+                    //on retire le loader...
+
+                    $('.loaders').css('display','none');
+
+                    alert('Data sent successfully');
+//                    window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_affichage";
+                },
+                //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                412: function (response) {
+                    var errorsForm = response.responseJSON.formErrors;
+                    //on affiche les erreurs...
+                    alert('error');
+
+                }
+            }
+        });
+
+    });
+
+</script>
+</html>
