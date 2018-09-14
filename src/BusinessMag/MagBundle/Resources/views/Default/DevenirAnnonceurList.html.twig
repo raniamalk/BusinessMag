@@ -1,0 +1,108 @@
+{% extends 'MagBundle::FormsBase.html.twig' %}
+{% block title %} Historique Devenir Annonceur  {% endblock %}
+{% block pagetitle %} <h3> Historique Devenir Annonceur </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"> Formulaire </li>
+        <li class="breadcrumb-item">Devenir annonceur</li>
+        <li class="breadcrumb-item active"><a href="{{ path('annonceur_list') }}">Historique</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Fonction</th>
+                            {#<th>Téléphone portable</th>
+                            <th>Email perso</th>#}
+                            <th>Raison sociale</th>
+                            {#<th>Site web</th>
+                            <th>Téléphone fixe</th>
+                            <th>Email générique</th>#}
+                            <th>Type annonce</th>
+                            <th>Sponsoriser un thème</th>
+                            <th>Thème de l'article</th>
+                            <th>Date Creation</th>
+                            <th> </th>
+                            <th> </th>
+
+                        </tr>
+                        </thead>
+
+                        {% for h in annonceur %}
+                            <tr>
+
+                                <td>{{ h.nom }}</td>
+                                <td>{{ h.fonction }}</td>
+                                {#<td>{{ h.telPerso }}</td>
+                                <td>{{ h.emailPerso }}</td>#}
+                                <td>{{ h.raisonSocial }}</td>
+                                {#<td>{{ h.siteWeb }}</td>
+                                <td>{{ h.telPro }}</td>
+                                <td>{{ h.emailPro }}</td>#}
+                                <td>{{ h.pageAcc }}<br>{{h.habillageAcc }}<br>{{h.banniereAcc }}<br>{{h.pageTheme }}<br>{{h.banniereThe }}<br>{{h.vignetteThe }}<br>{{h.pageArticle }}<br>{{h.banniereArt }}<br>{{h.vignetteArt }}</td>
+                                <td> {{ h.sponsTheme|join('\n')| nl2br}} </td>
+                                <td> {{ h.artTheme|join('\n')| nl2br}} </td>
+                                <td>{{ h.createdAt | date("d/m/Y") }}</td>
+                                {#<td>{{ h.article | slice(0, 30) ~ ' ...' }}</td>
+                                <td>{{ h.theme.nom }}</td>#}
+                                <td><a href="{{ path('annonceur_show', { 'id': h.id }) }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
+                                <td><a href="{{ path('annonceur_delete', { 'id': h.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+{% endblock %}
+
+
+
+{#
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table1').dataTable( {
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+                }
+            });
+        } );
+
+
+    </script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+{% endblock %}#}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').dataTable( {
+                "order": [[ 6, "desc" ]],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+                }
+            });
+        } );
+
+
+    </script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
+    <script src="{{ asset('js/front.js')}}"></script>
+
+{% endblock %}

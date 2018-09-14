@@ -1,0 +1,798 @@
+body {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+section {
+  width:100%;
+  background-size: cover;
+  padding: 50px 0 50px 0;
+  margin: 0;
+}
+.icon-glyph{
+  width: 0px !important;
+    height: 0px !important;
+    background-color: rgba(255,255,255,0); !important;
+    border-radius: 2px!important;
+    color: #656d72 !important;
+    padding: 0px !important;
+    font-size: 15px !important;
+    float: initial !important;
+}
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+.date-article{
+  font-size: 12px;
+}
+.prof-color{
+  color: black;
+}
+.img-profess{    padding-top: 30px;}
+.well{height: 514px;
+
+}
+#fond-7 {
+    background-image:url('https://image.noelshack.com/fichiers/2018/13/3/1522248185-construison-ensemble-2.jpg');
+    left: 0;
+    height: 300px;
+}
+@media only screen and (max-width: 768px) {
+   
+   .well{height: 519px;}
+  
+   .theme-btn {
+    top: 19% !important;;
+    left: 49% !important;;   
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+   
+   .logo-img{height: 80px;}
+  
+   
+
+}
+
+@media only screen and (max-width: 768px) {
+   
+   #search-icone{  margin-top: 318px;}
+  
+   
+
+}
+@media only screen and (max-width: 991px) and (min-width: 769px){
+   
+   .well{height: 519px;}
+  
+   .theme-btn {
+    top: 19% !important;;
+    left: 49% !important;;  
+   }
+
+}
+
+@media only screen and (max-width: 767px){
+   
+   .well{height: 688px;}
+  
+   
+
+}
+.btn-responsive{color: black;
+    background-color: #ffdc2e;}
+.icon-bar{background-color: black;}
+#search-icone{background-color: #FF7F50;
+    padding: 10px 16px 8px 16px;
+    color: white;
+    font-size: 18px;
+    border: 0;}
+
+.title-intro
+
+      {font-weight: bold;}
+
+ .theme-btn {
+    position: absolute;
+    top: 28%;
+    left: 33%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ffdc2e !important;
+    color: white;
+    font-size: 16px;
+    padding: 8px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+/* Page d'accceuil ------------------------------------------------- */
+
+/* navbar */
+
+.logo {
+  width: 100%;
+  height: 150px;
+  background-color: #231f20;
+  padding: 30px 20px 20px 0;
+}
+
+.logo .container {
+  padding-left: 0;
+}
+
+.navbar-acceuil {
+  margin: 0;
+  background-color: #ffea2b;
+  color: black;
+  border: 0;
+}
+
+.navbar-acceuil .container {
+  padding: 0;
+}
+
+.navbar-acceuil .navbar-header {
+  margin: 0;
+}
+
+.navbar-acceuil .collapse {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-acceuil .navbar-collapse, .navbar-acceuil .navbar-form {
+  border-color: #00000066;
+}
+
+.navbar-acceuil .navbar-nav > li> a {
+  color: black;
+  font-size: 17px;
+  padding: 4px 25px 20px 25px;
+
+}
+
+.navbar-modif {
+  padding-top: 26px;
+ padding-bottom: 0px;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    background-color: #ffdc2e;
+}
+
+.navbar-acceuil .navbar-nav>.open>a, .navbar-acceuil .navbar-nav>.open>a:focus, .navbar-acceuil .navbar-nav>.open>a:hover {
+  color: #000000;
+  background-color: #ffdc2e;
+  font-size: 17px;
+  padding: 26px 25px 20px 25px;
+    height: 44px;
+}
+
+
+.navbar-acceuil .dropdown-menu {
+  background-color: #ffdc2e;
+  color: black;
+top: 99%;
+}
+
+.navbar-acceuil .dropdown-menu>li>a {
+  padding: 8px 31px;
+}
+
+.navbar-acceuil .dropdown-menu>li>a:hover {
+  text-decoration: underline;
+  background-color: #efca0f;
+  font-weight: 500;
+}
+
+.navbar-acceuil .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+  background-color: #FF5722;
+  color: white;
+}
+
+.navbar-acceuil .navbar #search-icone {
+  height: 100%;
+  background-color: #ff5358;
+  color: white;
+  font-size: 24px;
+  padding: 15px 22px 15px 22px;
+  float: right;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .logo {
+      padding: 20px 20px 20px 20px;
+    }
+}
+
+
+@media only screen and (max-width: 991px) and (min-width: 768px)  {
+
+    .navbar-acceuil .search {
+      width: 100%;
+    }
+    .navbar-acceuil .navbar-form .input-group {
+      width: 100%;
+    }
+}
+
+/* navbar */
+
+
+
+
+
+
+
+
+/* search */
+
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+
+/* search */
+
+
+
+/* carousel */
+
+.carousel{
+    background: white;
+}
+.carousel .item{
+    min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+}
+.carousel .item img{
+    margin: 0 auto; /* Align slide image horizontally center */
+    width: 100%;
+}
+
+.carousel .test {
+  background-image: url('https://image.noelshack.com/fichiers/2018/13/4/1522339957-background1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 900px;
+  color: white;
+  padding-top: 200px;
+}
+
+.carousel .test h1 {
+  line-height: 50px;
+  padding-top: 180px;
+}
+
+.carousel .test a {
+  width: 250px;
+  height: 50px;
+  background-color: #ffdc2e;
+  color: black;
+  border: 0;
+  font-size: 23px;
+  margin-top: 30px;
+  padding-top: 8px;
+}
+
+@media only screen and (max-width: 1024px)  {
+
+  .carousel .test h1 {
+    padding-top: 160px;
+  }
+}
+
+@media only screen and (max-width: 768px)  {
+
+  .carousel .test h1 {
+    padding-top: 150px;
+  }
+}
+
+@media only screen and (max-width: 425px)  {
+
+  .carousel .test h1 {
+    padding-top: 60px;
+  }
+}
+
+/* carousel */
+
+
+/* articles */
+
+.articles {
+margin: 80px auto 60px auto;
+}
+
+.articles h4 {
+  margin-top: 26px;
+  margin-bottom: 26px;
+  line-height: 26px;
+}
+
+.articles img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.articles a {
+  width: 120px;
+  height: 32px;
+  background-color: #d9d9d9;
+  border-radius: 2px;
+  color: #656d72;
+  padding: 5px 9px 6px 8px;
+  font-size: 15px;
+  float: right;
+  margin-bottom: 25px;
+}
+
+.articles .icone {
+  padding: 0;
+}
+
+.articles .date {
+  padding: 0;
+  text-align: right;
+}
+/* articles */
+
+
+/* Nos émissions en ligne */
+
+.telecontact-tv {
+  font-size: 30px;
+  color: black;
+  font-weight: 400;
+  background-color: #ffdc2e;
+  height: 60px;
+  width: 100%;
+  vertical-align: middle;
+  display: block;
+  padding-top: 8px;
+}
+
+.telecontact-tv .container {
+  padding: 0;
+}
+
+.telecontact-tv .glyphicon {
+  vertical-align: -3px;
+}
+
+/* Nos émissions en ligne */
+
+
+
+
+
+/* grille-video */
+
+.grille-video .col {
+  padding: 15px;
+}
+
+.grille-video .col p {
+  font-size: 18px;
+}
+
+.grille-video .col iframe {
+  width: 350px;
+  height: 200px;
+}
+
+.grille-video .btn {
+  background-color: #ffdc2e;
+  font-size: 18px;
+  color: black;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 30px 30px 10px 30px;
+  padding: 10px 20px 10px 20px;
+}
+
+
+/* grille-video */
+
+
+
+/* Page d'articles ------------------------------------------------- */
+
+
+
+/* menu-articles */
+
+.menu-article {
+  margin: 0;
+  background-image: url('https://image.noelshack.com/fichiers/2018/30/1/1532345515-background-nav-article.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 500px;
+  color: white;
+  border: 0;
+}
+
+.menu-article .menu {
+  padding-top: 10px;
+}
+
+.menu-article .carousel {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.menu-article .carousel-control {
+  margin-top: -12px;
+  top: 100%;
+  bottom: 100%;
+}
+
+
+.menu-article .carousel .item {
+  min-height: 0;
+}
+
+.menu-article .carousel-inner {
+  width: 76%;
+}
+
+.menu-article a {
+  color: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 17px;
+}
+
+.menu-article a:hover {
+  color: #ffdc2e;
+}
+
+.menu-article p {
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 200px;
+  margin-bottom: 50px;
+}
+
+.menu-article .lien-titre-article {
+  width: 500px;
+  height: 40px;
+  background-color: #ffdc2e;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+@media only screen and (max-width: 768px) {
+
+.menu-article .menu {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.menu-article p {
+  font-size: 28px;
+  padding-top: 260px;
+}
+
+}
+/* menu-articles */
+
+
+/* article */
+
+.article {
+  margin-top: 30px;
+}
+
+.article .icones span {
+   background-color: #ffdc2e;
+   border-radius: 50%;
+   color: black;
+   padding: 10px;
+   font-size: 24px;
+   width: 50px;
+   height: 50px;
+   margin: 10px;
+}
+
+.article .icones .icones-principale {
+   background-color: #ffdc2e;
+   border-radius: 50%;
+   color: black;
+   padding: 10px;
+   font-size: 20px;
+   width: 40px;
+   height: 40px;
+   margin: 10px;
+}
+
+.article .icones a {
+   background-color: black;
+   border-radius: 50%;
+   color: white;
+   padding: 10px;
+   font-size: 20px;
+   width: 40px;
+   height: 40px;
+   margin: 10px;
+}
+
+.article .texte-article {
+   text-align: justify;
+}
+
+.article .commentaire {
+   margin-top: 40px;
+}
+
+.article .commentaire input {
+   margin-bottom: 0px;
+}
+
+.article .commentaire button {
+   background-color: #ffdc2e;
+   color: black;
+   border: 0;
+   font-weight: bold;
+}
+
+.article .commentaire p {
+   margin-bottom: 40px;
+}
+
+.article .selection-professionnels button {
+   width: 100%;
+   text-align: center;
+   background-color: #f06456;
+   color: white;
+   padding-top: 8px;
+   padding-bottom: 8px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+.article .selection-professionnels .ligne {
+   height: 1px;
+   background-color: #cbcbcb;
+   width: 100%;
+}
+
+.article .selection-professionnels .img {
+   padding-left: 0;
+}
+
+.article .selection-professionnels img {
+   width: 100%;
+}
+
+.article .selection-professionnels .text p {
+   margin: 8px;
+   text-align: center;
+   font-weight: bold;
+}
+
+.article .selection-professionnels .rubrique {
+  width: 100%;
+  text-align: center;
+  background-color: #e3eaed;
+  color: #a9b3b7;
+  padding: 4px 0 4px 0;
+  margin: 4px 0 4px 0;
+}
+
+@media only screen and (max-width: 991px)  {
+
+  .article .selection-professionnels {
+    display: none;
+  }
+
+  .article .icones .for-reponsive {
+    float: right;
+  }
+}
+
+/* article */
+
+
+/* back-next-article */
+
+.back-next-article .image-1 {
+  margin: 0;
+  background-image: url('https://image.noelshack.com/fichiers/2018/36/1/1535973559-article-suivant-copie.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  height: 400px;
+  border: 0;
+}
+
+.back-next-article .image-2 {
+  margin: 0;
+  background-image: url('https://image.noelshack.com/fichiers/2018/36/1/1535973601-article-suivant.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  height: 400px;
+  border: 0;
+}
+
+.back-next-article .image-1 a {
+  color: white;
+  font-size: 18px;
+  float: right;
+  margin: 100px 30px 0 0;
+  letter-spacing: 2px
+}
+
+.back-next-article .image-2 a {
+  color: white;
+  font-size: 18px;
+  float: left;
+  margin: 100px 0 0 30px;
+  letter-spacing: 2px
+}
+
+.back-next-article .image-1 p {
+  color: white;
+  font-size: 20px;
+  float: right;
+  margin: 100px 30px 0 0;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+.back-next-article .image-2 p {
+  color: white;
+  font-size: 20px;
+  float: left;
+  margin: 100px 0 0 30px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+/* back-next-article */
+
+
+
+/* footer ------------------------------------------------- */
+
+.footer {
+    background: black;
+    bottom: 0;
+    width: 100%;
+}
+
+#contentFooter {
+    margin: 0px;
+    width: 100%;
+    background: #231f20;
+    padding: 50px 0 40px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.footer .container {
+    padding: 0;
+}
+
+.footer .min {
+    padding-top: 30px;
+    font-size: 16px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+}
+
+.footer .titre {
+    font-weight: bold;
+    color: #ffdc2e;
+}
+
+#copyrightFooter {
+    color: black;
+    line-height: 30px;
+}
+
+#backToTopLink {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-left: 1px solid #93959d;
+    border-top: 1px solid #93959d;
+    position: absolute;
+    left: 50%;
+    top: 13px;
+    margin-left: -9px;
+}
+
+.footer .min .presentation {
+    padding: 0 20px 0 0;
+    font-size: 16px;
+    text-align: justify;
+    line-height: 26px;
+}
+
+.footer .min .Adresse {
+    padding: 10px;
+    font-size: 13px;
+}
+
+.footer a {
+    color: white;
+}
+
+@media only screen and (max-width: 767px)  {
+
+  .footer .container {
+      padding: 10px;
+  }
+}
+
+/* icons sociale media */
+
+.wrapper {
+  display: inline-flex;
+  justify-content: center;
+}
+.wrapper i {
+  padding: 10px;
+  text-shadow: 0px 6px 8px rgba(0, 0, 0, 0.6);
+  transition: all ease-in-out 150ms;
+}
+.wrapper a:nth-child(1) {
+  color: white;
+}
+.wrapper a:nth-child(2) {
+  color: white;
+}
+
+.wrapper i:hover {
+  margin-top: -3px;
+  text-shadow: 0px 14px 10px rgba(0, 0, 0, 0.4);
+}

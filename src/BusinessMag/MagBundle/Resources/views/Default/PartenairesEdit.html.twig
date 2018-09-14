@@ -1,0 +1,64 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Nos partenaires {% endblock %}
+{#{% block test %} show me this {% endblock %}#}
+{% block pagetitle %} <h3> Nos partenaires </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Footer</li>
+        <li class="breadcrumb-item">Nos partenaires</li>
+        <li class="breadcrumb-item active"><a href="{{ path('partenaires_edit', {'id':ids}) }}">Modification</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+
+    <form action="{{ path('partenaires_edit', {'id':ids}) }} " method="post" enctype="multipart/form-data" >
+        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+        {{ form_row(form._token) }}
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-horizontal">
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Partenaire </label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.partenaires, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Lien </label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.siteWeb, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Logo </label>
+                            <div class="col-sm-9">
+                                {{ form_widget(form.file, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-4 offset-sm-3">
+                                <button type="submit" class="btn">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $('.checkbox').on('change', function() {
+            $('.checkbox').not(this).prop('checked', false);
+        });
+    </script>
+{% endblock %}
+
+

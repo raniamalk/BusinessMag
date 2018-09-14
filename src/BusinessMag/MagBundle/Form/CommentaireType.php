@@ -15,9 +15,11 @@ class CommentaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('commentaire', 'text')
+             ->add('commentaire', 'textarea')
             ->add('nom', 'text')
-            ->add('email', 'text')
+            ->add('article','entity',
+                array('class'=>'MagBundle:Article','property'=>'id'))
+            ->add('email', 'email')
         ;
     }
     

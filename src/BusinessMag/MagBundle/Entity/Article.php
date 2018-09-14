@@ -14,10 +14,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 
+
 /**
  * Article
  *
- * @ORM\Table()
+ * @ORM\Table("article")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\ArticleRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -35,14 +36,15 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="titre", type="string", length=255, nullable=true)
      */
     private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="texteIntro", type="text")
+     * @ORM\Column(name="texteIntro", type="text", nullable=true)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
      */
     private $texteIntro;
 
@@ -50,7 +52,8 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="texteArticle", type="text")
+     * @ORM\Column(name="texteArticle", type="text", nullable=true)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
      *
      */
     private $texteArticle;
@@ -65,30 +68,108 @@ class Article
      */
     private $createdAt;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updateddAt", type="datetime", nullable=true)
+     *
+     */
+    private $updateddAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datePub", type="datetime", nullable=true)
+     *
+     */
+    private $datePub;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFin", type="datetime", nullable=true)
+     *
+     */
+    private $dateFin;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titreIntro", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
+     */
+    private $titreIntro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titreArticle", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
+     */
+    private $titreArticle;
+
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name=" datePubVed ", type="datetime" , nullable=true)
+     *
+     */
+    private $datePubVed;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name=" dateFinVed ", type="datetime" , nullable=true)
+     *
+     */
+    private $dateFinVed;
+
+    /**
+     * @var \boolean
+     *
+     * @ORM\Column(name=" published ", type="boolean", nullable=true)
+     *
+     */
+    private $published;
+
+    /**
+     * @var \boolean
+     *
+     * @ORM\Column(name=" vpublished ", type="boolean", nullable=true)
+     *
+     */
+    private $Vpublished;
+
+
+//    @Assert\Type(type="MagBundle\Entity\Theme"  )
 
     /**
      * @var Theme
      *
-     * @Assert\valid()
-     * @Assert\Type(type="MagBundle\Entity\Theme"  )
+     *
+     *
      * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * 
+     *
+     *
      */
-
     private $theme;
+
 
     /**
      * @var ArrayCollection Article $article
      * Owning Side
      * @ORM\ManyToMany(targetEntity="Rubrique", inversedBy="articles", cascade={"persist", "merge"})
-     * @ORM\JoinTable(name="ArtRub", joinColumns={@ORM\JoinColumn(name="id_article", referencedColumnName="id")}, inverseJoinColumns={@ORM\JoinColumn(name="id_rubrique", referencedColumnName="id")})
+     * @ORM\JoinTable(name="artrub", joinColumns={@ORM\JoinColumn(name="id_article", referencedColumnName="id")}, inverseJoinColumns={@ORM\JoinColumn(name="id_rubrique", referencedColumnName="id")})
+     *
      */
 
     private $rubrique;
-
-
-
 
 
     /**
@@ -187,53 +268,174 @@ class Article
         $this->createdAt = $createdAt;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * @return \DateTime
+     */
+    public function getUpdateddAt()
+    {
+        return $this->updateddAt;
+    }
 
     /**
-     * Set theme
-     *
-     * @param \BusinessMag\MagBundle\Entity\Theme $theme
-     * @return Article
+     * @param \DateTime $updateddAt
      */
-    public function setTheme(\BusinessMag\MagBundle\Entity\Theme $theme)
+    public function setUpdateddAt($updateddAt)
     {
-        $this->theme = $theme;
-
-        return $this;
+        $this->updateddAt = $updateddAt;
     }
 
 
+
     /**
-     * Get theme
-     *
-     * @return \BusinessMag\MagBundle\Entity\Theme 
+     * @return \DateTime
+     */
+    public function getDatePub()
+    {
+        return $this->datePub;
+    }
+
+    /**
+     * @param \DateTime $datePub
+     */
+    public function setDatePub($datePub)
+    {
+        $this->datePub = $datePub;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * @param \DateTime $dateFin
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitreIntro()
+    {
+        return $this->titreIntro;
+    }
+
+    /**
+     * @param string $titreIntro
+     */
+    public function setTitreIntro($titreIntro)
+    {
+        $this->titreIntro = $titreIntro;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitreArticle()
+    {
+        return $this->titreArticle;
+    }
+
+    /**
+     * @param string $titreArticle
+     */
+    public function setTitreArticle($titreArticle)
+    {
+        $this->titreArticle = $titreArticle;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatePubVed()
+    {
+        return $this->datePubVed;
+    }
+
+    /**
+     * @param \DateTime $datePubVed
+     */
+    public function setDatePubVed($datePubVed)
+    {
+        $this->datePubVed = $datePubVed;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateFinVed()
+    {
+        return $this->dateFinVed;
+    }
+
+    /**
+     * @param \DateTime $dateFinVed
+     */
+    public function setDateFinVed($dateFinVed)
+    {
+        $this->dateFinVed = $dateFinVed;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param bool $published
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVpublished()
+    {
+        return $this->Vpublished;
+    }
+
+    /**
+     * @param bool $Vpublished
+     */
+    public function setVpublished($Vpublished)
+    {
+        $this->Vpublished = $Vpublished;
+    }
+
+    /**
+     * @return \BusinessMag\MagBundle\Entity\Theme
      */
     public function getTheme()
     {
         return $this->theme;
     }
+
+    /**
+     * @param \BusinessMag\MagBundle\Entity\Theme $theme
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
+    }
+
+
+
+
+
+
+
 
 
     /**
@@ -268,7 +470,6 @@ class Article
     /**
      * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
      *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
-     *
      */
     public $file;
     public function getUploadRootDir()
@@ -398,9 +599,6 @@ class Article
             if ($this->oldFilea != null) unlink($this->tempFilea);
         }
     }
-
-
-
 
     /**
      * @ORM\PreRemove()

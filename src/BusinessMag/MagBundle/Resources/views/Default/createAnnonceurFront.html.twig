@@ -1,0 +1,382 @@
+{% extends '::front.html.twig' %}
+
+  {% block body %}
+
+
+
+   <div class="container-autofluid" > 
+
+    <!-- debut de recherche -->
+
+
+
+
+
+
+
+
+
+    <!-- fin rechereche  -->
+     <br>
+    <section id="fond-7" align="center">
+        <div class="container" id="content-4">
+            <div class="row">
+              <div class="col-md-12 col-sm-12  " align="center">    
+              </div>
+            </div>
+        </div>
+    </section>
+    
+ 	<div class="row">
+ 		<div class="col-md-4"></div>
+ 		<div class="col-md-4" style="padding: 1% 1% 1% 1%;background-color:black;color: white;text-align: center;font-weight: bold;"><span>Devenir Annonceur</span></div>
+ 		<div class="col-md-4"></div>
+
+ 	</div>
+ 
+<br>
+
+<!-- formualire -->
+ 	<div class="row">
+ 		<div class="col-md-2"></div>
+ 		<div class="col-md-7">
+ 		   		  
+   
+ <form class="form-horizontal" id="form">
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="nom">Nom & Prénom</label>
+    <div class="col-sm-8">
+     <input class="annonceur form-control" type="text" name="nom" id="nom">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="fonction">Fonction</label>
+    <div class="col-sm-8"> 
+      <input class="annonceur form-control" type="text" name="fonction" id="fonction" required="required">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="telPerso">Téléphone</label>
+    <div class="col-sm-8"> 
+      <input class="annonceur form-control" type="text" name="telephone_perso" id="telephone_perso">
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="emailPerso">Email</label>
+    <div class="col-sm-8"> 
+      <input class="annonceur form-control" type="email" name="email"  id="email">
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="raisonSocial">Raison Sociale</label>
+    <div class="col-sm-8"> 
+     <input class="annonceur form-control" type="text" name="raisonSoc" id="raisonSoc">
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="siteWeb">Site web</label>
+    <div class="col-sm-8"> 
+      <input class="annonceur form-control" type="text" name="site" id="site">
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="telPro">Téléphone entreprise</label>
+    <div class="col-sm-8"> 
+      <input class="annonceur form-control" type="text" name="tel" id="tel">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="emailPro">Email entreprise</label>
+    <div class="col-sm-8"> 
+    <input class="annonceur form-control" type="text" name="mail" id="mail">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="visibilite">Visibilité</label>
+   <div class=" checkbox col-sm-8"> 
+    <label>
+    <input class="annonceur" type="checkbox" name="page_acc" id="page_acc" checked="checked" value="Page d'accueil" > <b>Page d'accueil </b><br>
+    </label>
+    </div>
+  </div> 
+
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="article"></label>
+   <div class="col-sm-8 checkbox"> 
+    <label>
+     <input class="annonceur" type="checkbox" name="banniere_acc" id="banniere_acc" value="Bannière"> Bannière 
+    </label>
+
+    <div class="" style="float: left;margin-right: 20%;"> <label>
+      <input class="annonceur" type="checkbox" name="habillage_acc" id="habillage_acc" value="Habillage"> Habillage<br>  
+      </label>
+    </div>
+
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="pageTheme"></label>
+    <div class=" checkbox col-sm-8"> 
+    <label>
+      <input class="annonceur" type="checkbox" name="page_theme" checked="checked" id="page_theme" value="Page théme" ><b>Page Thème</b>
+    </label>
+    </div>
+  </div> 
+   
+
+      <div class="form-group">
+    <label class="control-label col-sm-4" for="banniereThe"></label>
+   <div class="col-sm-8 checkbox"> 
+    <label>
+      <input class="annonceur" type="checkbox" name="banniere_theme" id="banniere_theme" value="Bannière"> Bannière
+      </label>
+
+          <div class="" style="float: left;margin-right: 20%;"> <label>
+    <input class="annonceur" type="checkbox" name="vignette_theme" id="vignette_theme" value="Vignette"> Vignette
+      </label>
+    </div>
+
+    </div>
+  </div>
+
+
+  
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="sponsTheme"></label>
+    <div class=" checkbox col-sm-8"> 
+    <label>
+       <br>
+    {% for theme in themes|slice(6,13) %}
+    <label class="checkbox-inline">
+        <input id="select" class="annonceur"  type="checkbox" name="themes_sponsor" id="themes_sponsor" value="{{ theme.nom }}"/>&nbsp; &nbsp;{{ theme.nom }}
+    </label><br>
+    {% endfor %}
+
+    </label>
+   <div class="" style="float: left;margin-right: 15%;"> 
+    <span style="color: red;">Sponsoriser un thème : </span><br>
+        {% for theme in themes|slice(0,6) %}
+    <label class="checkbox-inline">
+        <input id="select" class="annonceur"  type="checkbox" name="themes_sponsor" id="themes_sponsor" value="{{ theme.nom }}"/>&nbsp; &nbsp;{{ theme.nom }}
+    </label><br>
+    {% endfor %}
+   </div>
+       </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="pageArticle"></label>
+    <div class=" checkbox col-sm-8"> 
+    <label>
+    <input class="annonceur" type="checkbox" name="page_article" checked="checked" id="page_article" value="Page article" >  <b>Page article</b>
+    </label>
+    </div>
+  </div>
+  
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="banniereArt"></label>
+   <div class="col-sm-8 checkbox"> 
+    <label>
+     <input class="annonceur" type="checkbox" name="banniere_article" id="banniere_article"  value="Bannière"> Bannière
+      </label>
+
+          <div class="" style="float: left;margin-right: 20%;"> <label>
+      <input class="annonceur" type="checkbox" name="vignette_article" id="vignette_article" value="Vignette"> Vignette
+      </label>
+    </div>
+
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="artTheme"></label>
+    <div class=" checkbox col-sm-8"> 
+    <label>
+       <br>
+    {% for theme in themes|slice(6,13) %}
+    <label class="checkbox-inline">
+        <input id="select" class="annonceur"  type="checkbox" name="themes_article" id="themes_article" value="{{ theme.nom }}"/>&nbsp; &nbsp;{{ theme.nom }}
+    </label><br>
+    {% endfor %}
+
+    </label>
+   <div class="" style="float: left;margin-right: 10%;"> 
+    <span style="color: red;">Choisir le thème de l'article :</span><br>
+        {% for theme in themes|slice(0,6) %}
+    <label class="checkbox-inline">
+        <input id="select" class="annonceur"  type="checkbox" name="themes_article" id="themes_article" value="{{ theme.nom }}"/>&nbsp; &nbsp;{{ theme.nom }}
+    </label><br>
+    {% endfor %}
+   </div>
+       </div>
+  </div>
+
+
+  
+ 
+  <div class="form-group"> 
+    <div class="col-md-10"></div>
+    <div class="col-sm-2">
+      <button type="submit" id="envoyer" class="btn btn-default" style="background-color:yellow">Envoyer</button>
+    </div>
+  </div>
+          <!-- fin formulaire -->   
+  </form>
+ 	    </div>
+ 	
+ 	</div>
+ </div>      
+  
+ 
+ <script>
+
+$(function(){
+  $("#nom").prop('required',true);
+
+})
+
+   $('#envoyer').on('click ', function () {
+
+        $('.loaders').css('display','');
+        var nom=  $("#nom").val();
+         console.log(nom);
+        var fonction=  $("#fonction").val();
+        var telperso=  $("#telephone_perso").val();
+        console.log(telperso);
+        var emailperso=  $("#email").val();
+        var raisons=  $("#raisonSoc").val();
+        var siteweb=  $("#site").val();
+        var telpro=  $("#tel").val();
+        var emailpro=  $("#mail").val();
+        var page_acc = $('input[name=page_acc]:checked').val();
+        var habillage_acc = $('input[name=habillage_acc]:checked').val();
+        var banniere_acc = $('input[name=banniere_acc]:checked').val();
+        var page_theme = $('input[name=page_theme]:checked').val();
+        var banniere_theme = $('input[name=banniere_theme]:checked').val();
+        var vignette_theme = $('input[name=vignette_theme]:checked').val();
+        /*  var themes_sponsor = $('input[name=themes_sponsor]:checked').val();*/
+        var page_article = $('input[name=page_article]:checked').val();
+        var banniere_article = $('input[name=banniere_article]:checked').val();
+        var vignette_article = $('input[name=vignette_article]:checked').val();
+        /* var themes_article = $('input[name=themes_article]:checked').val();*/
+        var array_theme_sponsor =  new Array();
+        var array_array_theme_article =  new Array();
+        if (($("input[name=themes_sponsor]:checked")).each(function ()
+            { array_theme_sponsor.push($(this).val());  })) ;
+        if (($("input[name=themes_article]:checked")).each(function ()
+            { array_array_theme_article.push($(this).val());  })) ;
+        var data_send = {'nom': nom,'fonction':fonction,'telperso': telperso,'emailperso':emailperso,'raisons':raisons,
+            'siteweb': siteweb,'telpro':telpro,'emailpro': emailpro,'page_acc':page_acc,'habillage_acc':habillage_acc,
+            'banniere_acc': banniere_acc,'page_theme':page_theme,'banniere_theme': banniere_theme,
+            'vignette_theme':vignette_theme, 'themes_sponsor':array_theme_sponsor,'page_article': page_article,'banniere_article':banniere_article,
+            'vignette_article': vignette_article,'themes_article': array_array_theme_article};
+
+        $.ajax({
+            url: '{{ path('annonceur_fill') }}',
+            type: 'POST',
+            data: data_send,
+
+            statusCode: {
+                //traitement en cas de succès
+                200: function (response) {
+                    var successMessage = response;
+
+                    console.log(successMessage);
+                    /!*  $('#prestation').children("option").remove();*!/
+                    //on vide les champs formulaires ou on le supprime ou ...
+                    //on retire le loader...
+
+/* Single line Reset function executes on click of Reset Button */
+                    $("#form")[0].reset();
+
+                    $('.loaders').css('display','none');
+
+//                    window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_affichage";
+                },
+                //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                412: function (response) {
+                    var errorsForm = response.responseJSON.formErrors;
+                    //on affiche les erreurs...
+                    alert('error');
+
+                }
+            }
+        });
+
+    })
+
+
+    $(document).on('click', '#envoyer', function (event) {
+        event.preventDefault();
+
+
+        var nom=  $("#nom").val();
+        var fonction=  $("#fonction").val();
+        var telperso=  $("#telephone").val();
+        var emailperso=  $("#email").val();
+        var raisons=  $("#raisonSoc").val();
+        var siteweb=  $("#site").val();
+        var telpro=  $("#tel").val();
+        var emailpro=  $("#mail").val();
+        var page_acc = $('input[name=page_acc]:checked').val();
+        var habillage_acc = $('input[name=habillage_acc]:checked').val();
+        var banniere_acc = $('input[name=banniere_acc]:checked').val();
+        var page_theme = $('input[name=page_theme]:checked').val();
+        var banniere_theme = $('input[name=banniere_theme]:checked').val();
+        var vignette_theme = $('input[name=vignette_theme]:checked').val();
+        var themes_sponsor = $('input[name=themes_sponsor]:checked').val();
+        var page_article = $('input[name=page_article]:checked').val();
+        var banniere_article = $('input[name=banniere_article]:checked').val();
+        var vignette_article = $('input[name=vignette_article]:checked').val();
+        var themes_article = $('input[name=themes_article]:checked').val();
+      
+              var data_send = {'nom': nom,'fonction':fonction,'telperso': telperso,'emailperso':emailperso,'raisons':raisons,
+            'siteweb': siteweb,'telpro':telpro,'emailpro': emailpro,'page_acc':page_acc,'habillage_acc':habillage_acc,
+            'banniere_acc': banniere_acc,'page_theme':page_theme,'banniere_theme': banniere_theme,
+            'vignette_theme':vignette_theme, 'themes_sponsor':themes_sponsor,'page_article': page_article,'banniere_article':banniere_article,
+            'vignette_article': vignette_article,'themes_article': themes_article
+         
+          };
+
+
+        $.ajax({
+            url: '{{ path('annonceur_save') }}',
+            type: 'POST',
+            data: data_send,
+            statusCode: {
+                //traitement en cas de succès
+                200: function (response) {
+                    var successMessage = response;
+
+
+                    console.log(successMessage);
+                    /*  $('#prestation').children("option").remove();*/
+                    //on vide les champs formulaires ou on le supprime ou ...
+                    //on retire le loader...
+
+                    $('.loaders').css('display','none');
+                     
+                    alert('Votre annonce a été ajouter');
+
+//                    window.location.href = "http://localhost/ecommerce/web/app_dev.php/devis_affichage";
+                },
+                //traitement en cas d'erreur (on peut aussi traiter le cas erreur 500...)
+                412: function (response) {
+                    var errorsForm = response.responseJSON.formErrors;
+                    //on affiche les erreurs...
+                    alert('error');
+
+                }
+            }
+        });
+
+    });
+
+</script>
+{#</html>#}
+  {% endblock %}

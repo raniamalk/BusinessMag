@@ -1,86 +1,148 @@
-{#{% extends 'MagBundle::base.html.twig' %}
-{% block title %} Habillage {% endblock %}
-
-{% block body %}
-
-    <h3> Habillage </h3>
-
-    <div class="container">
-
-        <form action="{{ path('habillage_add') }}" {{ form_enctype(form) }} method="POST" >
-            {{ form_widget(form) }}
-            <br><br>
-
-            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
-            #}{#<input class="btn btn-primary" type="submit" value="Enregistrer" />#}{#
-        </form>
-
-    </div>
-
-{% endblock %}#}
-
-
-{#{% extends 'MagBundle::base.html.twig' %}#}
-{#{% block title %} Habillage {% endblock %}#}
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Produits Display {% endblock %}
 {#{% block test %} show me this {% endblock %}#}
+{% block pagetitle %} <h3> Produits Display </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Insertion Web</li>
+        <li class="breadcrumb-item">Produits Display</li>
+        <li class="breadcrumb-item active"><a href="{{ path('habillage_add') }}">Ajout</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
-    {#<h3 xmlns="http://www.w3.org/1999/html"> Habillage </h3>#}
+
+<style>
+    .control-label {
+
+        max-width: 60%!important;
+    }
+</style>
+    <form action="{{ path('habillage_add') }} " method="post" enctype="multipart/form-data" >
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-horizontal">
+                        <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Image </label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" name="file" id="file" required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row ">
+                            <label class="col-sm-3 form-control-label">Type </label>
+                            <div class="col-sm-9 Htype">
+                                <div id="divType">
+                                    <input id="optionsRadios1" type="radio" value="Habillage" name="optradio" checked>
+                                    <label for="optionsRadios1">Habillage</label>
+                                </div>
+                                <div id="divType">
+                                    <input id="optionsRadios2" type="radio" value="Bannière page d'accueil" name="optradio">
+                                    <label for="optionsRadios2">Bannière page d'accueil</label>
+                                </div>
+                                <div id="divType">
+                                    <input id="optionsRadios3" type="radio" value="Bannière page thème" name="optradio">
+                                    <label for="optionsRadios3">Bannière page thème</label>
+                                </div>
+                                <div id="divType">
+                                    <input id="optionsRadios4" type="radio"value="Vignette page thème" name="optradio">
+                                    <label for="optionsRadios4">Vignette page thème</label>
+                                </div>
+                                <div id="divType">
+                                    <input id="optionsRadios5" type="radio" value="Bannière page article" name="optradio">
+                                    <label for="optionsRadios5">Bannière page article</label>
+                                </div>
+                                <div id="divType">
+                                    <input id="optionsRadios6" type="radio" value="Vignette page article" name="optradio">
+                                    <label for="optionsRadios6">Vignette page article</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row rsbottom">
+                            <label class="col-sm-3 form-control-label">Raison Sociale </label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="inputdefault" name="raisonSocial" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Code Firme </label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="inputdefault" name="codeFirm" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Lien </label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="inputdefault" name="lien" type="text">
+                            </div>
+                        </div>
+
+                        <div id="themesStyle" class="checkbox-inline form-group col-lg-15 row" >
+                            <label  for="inputdefault"class="col-sm-3 form-control-label">Thèmes </label><br>
+                            <div class="cb" id="listOfThemesstyle">
+                                {% for theme in themes %}
+
+                                    <input  name="theme" type="checkbox" class="checkbox" value="{{ theme.id }}"/>&nbsp; &nbsp;{{ theme.nom }}
+                                    <br>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div  class="form-group col-lg-15 row">
+                            <label class="col-sm-3 form-control-label">Publié </label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="etatPub" name="etatPub" type="checkbox">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-15 row">
+                            <label class="col-sm-3 form-control-label">Date Début  </label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="dateDebut" name="dateDebut" type="date">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-15 row">
+                            <label class="col-sm-3 form-control-label">Date Fin  </label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="dateFin" name="dateFin" type="date">
+                            </div>
+                        </div>
+
+                        <input type="text" id="ran" name="fname" style="display:none;" value="3">
 
 
-    <form action="{{ path('habillage_add_test') }} " method="post" enctype="multipart/form-data" >
-
-        <div class="panel panel-default">
-            <div class="panel-heading"><h2>Ajouter </h2></div>
-            {#<div class="panel-body">#}
-
-            <div class="form-group col-xs-6">
-                <label for="inputdefault">Image :</label><br>
-                <input type="file" name="file" id="file" required>
+                        <div class="form-group row">
+                            <div class="col-sm-4 offset-sm-3">
+                                <button type="submit" class="btn ">Enregistrer</button>
+                                <button type="submit" class="btn_info" id="add">Ajouter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-
-            <div class="form-group col-xs-6">
-                <label for="inputdefault">Type :</label><br>
-                <div class="radio">
-                    <label><input type="radio" value="Habillage" name="optradio" checked>Habillage</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" value="Bannière page d'accueil" name="optradio">Bannière page d'accueil</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" value="Bannière page thème" name="optradio" >Bannière page thème</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" value="Vignette page thème" name="optradio">Vignette page thème</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" value="Bannière page article" name="optradio">Bannière page article</label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" value="Vignette page article" name="optradio">Vignette page article</label>
-                </div>
-            </div>
-
-            <div class="form-group col-xs-6">
-                <label for="inputdefault">Lien :</label><br>
-                <input class="form-control" id="inputdefault" name="lien" type="text" >
-            </div>
-            <label class="checkbox-inline">themes:<br>
-                {% for theme in themes %}
-
-                    <input  name="theme" type="checkbox" class="checkbox" value="{{ theme.id }}"/>&nbsp; &nbsp;{{ theme.nom }}
-                    <br>
-                {% endfor %}
-            </label>
-
-            {#</div>#}
         </div>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
+
+        $(document).on('click', '#add', function (event) {
+
+
+            event.stopPropagation();
+            $('#ran').val(5);
+            $(this).trigger('click');
+
+        });
+
         $('.checkbox').on('change', function() {
             $('.checkbox').not(this).prop('checked', false);
         });

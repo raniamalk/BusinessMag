@@ -2,7 +2,7 @@
 
 namespace BusinessMag\MagBundle\Form;
 
-use function PHPSTORM_META\type;
+/*use function PHPSTORM_META\type;*/
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;

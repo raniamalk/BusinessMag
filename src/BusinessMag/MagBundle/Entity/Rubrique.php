@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Rubrique
  *
- * @ORM\Table()
+ * @ORM\Table("rubrique")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\RubriqueRepository")
  */
 class Rubrique

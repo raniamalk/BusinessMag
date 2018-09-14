@@ -1,5 +1,13 @@
 {% extends 'MagBundle::base.html.twig' %}
 {% block title %} A propos du site Business Mag {% endblock %}
+{% block pagetitle %} <h3> Ajout du champ A propos  </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"> Footer </li>
+        <li class="breadcrumb-item">A propos</li>
+        <li class="breadcrumb-item active"><a href="{{ path('apropos_add') }}">Modification</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
     <style>
         #businessmag_magbundle_textedescriptif_description{
@@ -12,13 +20,7 @@
             resize: none;
         }
     </style>
-    <h3> A propos du site Business Mag </h3>
-{#        <div class="container">
-            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
-            {{ form_widget(form) }}
-            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
-            {{ form_end(form) }}
-        </div>#}
+
 
     <div class="container">
 
@@ -26,7 +28,7 @@
             {{ form_widget(form) }}
             <br><br>
 
-            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn'}}) }}
             {#<input class="btn btn-primary" type="submit" value="Enregistrer" />#}
         </form>
 

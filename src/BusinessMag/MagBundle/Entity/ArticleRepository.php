@@ -12,4 +12,155 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
+	/*public function listArticles(\DateTime $start,\DateTime $end){
+		$now =date('Y-m-d');
+		//var_dump($now);
+		$qb=$this->createQueryBuilder('a');
+		     $qb->where('a.createdAt BETWEEN :stat AND :end')
+		        ->setParameter('dateDebut',$stat)
+		        ->setParameter('dateFin',$end)
+		        ->setMaxResults(6);
+		    return $qb->getQuery()->getResult();
+
+	}*/
+
+
+    public function listArticles(){
+    	$now =date('Y-m-d H:i:s');
+		$qb=$this->createQueryBuilder('a');
+		      $qb->where('a.published = :pub')
+		         ->andWhere('a.datePub <= :now')
+		         ->andWhere('a.dateFin >= :now')
+		         ->orderBy('a.createdAt','desc')
+		         ->setMaxResults(6)
+		         ->setParameter('pub',1)
+		         ->setParameter('now',$now);
+		    return $qb->getQuery()->getResult();
+	}
+
+	public function slideArticles(){
+		$now =date('Y-m-d H:i:s');
+		$qb=$this->createQueryBuilder('a');
+		      $qb->where('a.Vpublished = :pub')
+		         ->andWhere('a.datePubVed <= :now')
+		         ->andWhere('a.dateFinVed >= :now')
+		         ->orderBy('a.createdAt','desc')
+		         ->setMaxResults(3)
+		         ->setParameter('pub',1)
+		         ->setParameter('now',$now);
+
+		    return $qb->getQuery()->getResult();
+
+	}
+
+
+		public function listeRubriques($id){
+
+		
+
+        /*$em = $this->getContainer()->get('doctrine')->getManager();
+        $repository = $em->getRepository('MagBundle:Rubrique');
+        $qb = $repository->createQueryBuilder('a')
+                            ->innerJoin('a.rubrique', 'r')
+                            ->where('r.id = :id_rub')
+                            ->andWhere('a.id = :id_art')
+                            ->setParameter('id_rub', 5)
+                            ->setParameter('id_art', 91)
+
+                            ->getQuery()->getResult();
+                             return $qb->getQuery()->getResult();*/
+        $sql="SELECT distinct(r.nom) FROM article a, rubrique r, artrub b  WHERE a.id=? and r.id=b.id_rubrique and a.id=b.id_article";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
+        $stmt->bindValue(1,$id);
+        $stmt->execute();
+        return $stmt->fetchAll();                    
+		 
+	}
+     
+public function nextArticle($id,$dateCreat){
+    	$now =date('Y-m-d H:i:s');
+		$qb=$this->createQueryBuilder('a');
+		      $qb->where('a.published = :pub')
+		         ->andWhere('a.datePub <= :now')
+		         ->andWhere('a.dateFin >= :now')
+		         ->andWhere('a.createdAt < :dateCreat')
+		         //->orderBy('a.id','desc')
+		         ->orderBy('a.createdAt','desc')
+		         ->setMaxResults(1)
+		         ->setParameter('pub',1)
+		         ->setParameter('dateCreat',$dateCreat)
+		         //->setParameter('id',$id)
+		         ->setParameter('now',$now);
+		    return $qb->getQuery()->getOneOrNullResult();
+	}
+
+      public function prevArticle($id,$dateCreat){
+    	$now =date('Y-m-d H:i:s');
+		$qb=$this->createQueryBuilder('a');
+		      $qb->where('a.published = :pub')
+		         ->andWhere('a.datePub <= :now')
+		         ->andWhere('a.dateFin >= :now')
+		         ->andWhere('a.createdAt > :dateCreat')
+		         ->orderBy('a.createdAt','asc')
+		         ->setMaxResults(1)
+		         ->setParameter('pub',1)
+		         ->setParameter('dateCreat',$dateCreat)
+		         ->setParameter('now',$now);
+		    return $qb->getQuery()->getOneOrNullResult();
+	}
+ public function firstArticle(){
+    	$now =date('Y-m-d H:i:s');
+		$qb=$this->createQueryBuilder('a');
+		      $qb->where('a.published = :pub')
+		         ->andWhere('a.datePub <= :now')
+		         ->andWhere('a.dateFin >= :now')
+		        // ->andWhere('a.id < :id')
+		         ->orderBy('a.createdAt','desc')
+		         ->setMaxResults(1)
+		         ->setParameter('pub',1)
+		        // ->setParameter('id',$id)
+		         ->setParameter('now',$now);
+		    return $qb->getQuery()->getOneOrNullResult();
+	}
+
+	  public function lastArticle(){
+    	$now =date('Y-m-d H:i:s');
+		$qb=$this->createQueryBuilder('a');
+		      $qb->where('a.published = :pub')
+		         ->andWhere('a.datePub <= :now')
+		         ->andWhere('a.dateFin >= :now')
+		         ->orderBy('a.id','desc')
+		         ->orderBy('a.createdAt','desc')
+		         ->setFirstResult(5)
+		         ->setMaxResults(1)
+		         ->setParameter('pub',1)
+		         ->setParameter('now',$now);
+			    return $qb->getQuery()->getOneOrNullResult();
+	}
+
+   public function recherche($chaine){
+
+    	$qb=$this->createQueryBuilder('a');
+    	$qb->where('a.titre like :chaine OR a.texteIntro like :chaine OR
+    		a.texteArticle like  :chaine OR a.titreIntro like :chaine OR 
+    		a.titreArticle like :chaine')
+    	   ->andWhere('a.published = :pub')
+    	   ->setParameter('pub',1)
+    	   ->setParameter('chaine','%'.$chaine.'%');
+    	   return $qb->getQuery()->getResult();
+    }
+public function listesArticleByTheme($theme){
+
+    	$qb=$this->createQueryBuilder('a');
+    	$qb->where('a.theme = :theme')
+    	   ->andwhere('a.published = :pub')
+    	   ->orderBy('a.createdAt','desc')
+    	   ->setParameter('theme',$theme)
+    	   ->setParameter('pub',1)
+    	   ;
+
+    	return $qb->getQuery()->getResult();
+    }
+
 }

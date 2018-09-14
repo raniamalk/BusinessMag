@@ -15,20 +15,44 @@ class PublierArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', 'text')
-            ->add('fonction', 'text')
-            ->add('telPerso', 'text')
-            ->add('emailPerso', 'text')
-            ->add('raisonSocial', 'text')
-            ->add('siteWeb', 'text')
-            ->add('telPro', 'text')
-            ->add('emailPro', 'text')
-            ->add('article','text')
+            /*->add('nom', 'text' ,array(
+                'required' => false))
+            ->add('fonction', 'text',array(
+                'required' => false))
+            ->add('telPerso', 'text',array(
+                'required' => false))
+            ->add('emailPerso', 'text',array(
+                'required' => false))
+            ->add('raisonSocial', 'text',array(
+                'required' => false))
+            ->add('siteWeb', 'text',array(
+                'required' => false))
+            ->add('telPro', 'text',array(
+                'required' => false))
+            ->add('emailPro', 'text',array(
+                'required' => false))
+            ->add('article','textarea',array(
+                'required' => false))
             ->add ('theme', 'entity', array(
                 'class' => 'MagBundle:Theme',
                 'property' => 'nom',
                 'expanded' => true, ))
-            ->add('Valider', 'submit');
+            ->add('Valider', 'submit');*/
+              ->add('nom', 'text')
+            ->add('fonction', 'text')
+            ->add('telPerso', 'text')
+            ->add('emailPerso', 'email')
+            ->add('raisonSocial', 'text')
+            ->add('siteWeb', 'text')
+            ->add('telPro', 'text')
+            ->add('emailPro', 'email')
+            ->add('article','textarea')
+            ->add ('theme', 'entity', array(
+                'class' => 'MagBundle:Theme',
+                'property' => 'nom',
+                'expanded' => true, ))
+            //->add('Valider', 'submit')
+            ;
     }
     
     /**

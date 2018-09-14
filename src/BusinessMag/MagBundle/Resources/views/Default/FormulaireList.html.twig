@@ -1,515 +1,61 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <!-- Favicon-->
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+{% extends 'MagBundle::FormsBase.html.twig' %}
+{% block title %} Historique Devenir Partenaire {% endblock %}
+{% block body %}
+    <h3>Historique Devenir Partenaire</h3>
+    <div class="container">
+        <table class="table table-striped table-bordered dataTable no-footer" role="grid" id="table1"  {#style="display: none "#}>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Fonction</th>
+                <th>Téléphone portable</th>
+                <th>Email</th>
+                <th>Raison sociale</th>
+                <th>Site web</th>
+                <th>Téléphone fixe</th>
+                <th>Email</th>
+                <th>Proposition</th>
+                <th>Image</th>
+                <th>Date creation</th>
+                <th> </th>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="{{ asset('plugins/node-waves/waves.css') }}" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="{{ asset('plugins/animate-css/animate.css') }}" rel="stylesheet" />
-
-    <!-- Morris Chart Css-->
-    <link href="{{ asset('plugins/morrisjs/morris.css') }}" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styleMag.css') }}" rel="stylesheet">
-
-    <!-- Business Mag Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="{{ asset('css/themes/all-themes.css') }}" rel="stylesheet" />
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-    <title>Document</title>
-    <style>
-        .btn{
-            display: none!important;
-        }
-        h3{
-            text-align: center;
-        }
-        #table1_wrapper,#table2_wrapper,#table3_wrapper,#table4_wrapper
-        {
-            display: none;
-        }
-        #ddlCategory{
-            margin-top: 25px;
-            width: 100%;
-        }
-    </style>
-</head>
-    <body>
-    <nav class="navbar">
-        <div class="container-fluid" style="background-color:  #4d9c9a;">
-
-
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="{{ asset('index.html') }}">Business Mag</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-
-            </div>
-        </div>
-    </nav>
-    <!-- #Top Bar -->
-    <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="image">
-                    <img src="{{ asset('images/user.png') }}" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="email">john.doe@example.com</div>
-
-                </div>
-            </div>
-            <!-- #User Info -->
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">layers</i>
-                            <span>Contenu</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="{{ path('contenu_list') }}">Consulter</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('contenu_add') }}">Ajouter</a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">group</i>
-                            <span>Insertion Web</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Professionnels</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="{{ path('pro_list') }}">Lister</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('pro_add') }}">Ajouter</a>
-                                    </li>
-                                </ul>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Habillage</span>
-                                </a>
-
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">content_copy</i>
-                            <span>Article</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="{{ path('published_list') }}">Consulter</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
-                            <span>Formulaire</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="{{ path('form_list') }}">Lister</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">view_list</i>
-                            <span>Footer</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Texte descriptif</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="{{ path('td_list') }}">Consulter</a>
-                                    </li>
-                                    {#<li>
-                                        <a href="{{ path('theme_add') }}">Ajouter</a>
-                                    </li>#}
-                                </ul>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>A propos</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="{{ path('apropos_list') }}">Consulter</a>
-                                    </li>
-                                    {#<li>
-                                        <a href="{{ path('theme_add') }}">Ajouter</a>
-                                    </li>#}
-                                </ul>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Nos partenaires</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="{{ path('partenaires_list') }}">Consulter</a>
-                                    </li>
-                                    {#<li>
-                                        <a href="{{ path('theme_add') }}">Ajouter</a>
-                                    </li>#}
-                                </ul>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Themes</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="{{ path('theme_list') }}">Consulter</a>
-                                    </li>
-                                    {#<li>
-                                        <a href="{{ path('theme_add') }}">Ajouter</a>
-                                    </li>#}
-                                </ul>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <span>Rubriques</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="{{ path('rubrique_list') }}">Consulter</a>
-                                    </li>
-                                    {#<li>
-                                        <a href="{{ path('rubrique_add') }}">Ajouter</a>
-                                    </li>#}
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-
-                    <li>
-                        <a href="{{ path('fos_user_security_logout') }}">
-                            <i class="material-icons">input</i>
-                            <span>Déconnexion</span>
-                        </a>
-
-                </ul>
-            </div>
-            <!-- #Menu -->
-            <!-- Footer -->
-            <div class="legal">
-                <div class="copyright" style="text-align: center">
-                    &copy; 2018 <a href="javascript:void(0);">BusinessMag - EDICOM</a>.
-                </div>
-                {#<div class="version">
-                    <b>Version: </b> 1.0.5
-                </div>#}
-            </div>
-            <!-- #Footer -->
-        </aside>
-        <!-- #END# Left Sidebar -->
-
-    </section>
-
-    <section class="content ">
-        <div class="container-fluid">
-
-            <select id="ddlCategory" class="form-control form-control-lg" >
-
-                <br>
-                <option>Filter</option>
-
-                <option value="table1">Devenir partenaire</option>
-                <option value="table2">Publier un article</option>
-                <option value="table3">Laisser un commentaire</option>
-                <option value="table4">Devenir annonceur</option>
-            </select>
-
-            <h3>Historique Des formulaires</h3>
-
-            <table class="table table-striped table-bordered dataTable no-footer" role="grid" id="table1"  style="display: none ">
-                <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Fonction</th>
-                    <th>Telephone</th>
-                    <th>Email</th>
-                    <th>Raison sociale</th>
-                    <th>Site web</th>
-                    <th>Telephone</th>
-                    <th>Email</th>
-                    <th>Proposition</th>
-                    <th>Image</th>
-                    <th> </th>
-
-                </tr>
-                </thead>
-                {% for p in partenaire %}
-                    <tr>
-
-                        <td>{{ p.nom }}</td>
-                        <td>{{ p.fonction }}</td>
-                        <td>{{ p.telPerso }}</td>
-                        <td>{{ p.emailPerso }}</td>
-                        <td>{{ p.raisonSocial }}</td>
-                        <td>{{ p.siteWeb }}</td>
-                        <td>{{ p.telPro }}</td>
-                        <td>{{ p.emailPro }}</td>
-                        <td>{{ p.proposition | slice(0, 20) ~ ' ...' }}</td>
-                        <td><img src="{{ asset('uploads/' ~ p.Path) }}"  width="80" height="80"></td>
-                        <td><a href="{{ path('form_delete2', { 'id': p.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
-                    </tr>
-                {% endfor %}
-
-            </table>
-
-
-            <br><br>
-
-            <table class="table table-bordered table-striped example" id="table4" style="display: none">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Fonction</th>
-                        <th>Telephone</th>
-                        <th>Email</th>
-                        <th>Raison sociale</th>
-                        <th>Site web</th>
-                        <th>Telephone</th>
-                        <th>Email</th>
-                        <th>acceuil</th>
-                        <th>Sponsoriser un thème :</th>
-                        <th>Thème de l'article :</th>
-
-                    </tr>
-                </thead>
-
-            {% for h in annonceur %}
+            </tr>
+            </thead>
+            {% for p in partenaire %}
                 <tr>
 
-                    <td>{{ h.nom }}</td>
-                    <td>{{ h.fonction }}</td>
-                    <td>{{ h.telPerso }}</td>
-                    <td>{{ h.emailPerso }}</td>
-                    <td>{{ h.raisonSocial }}</td>
-                    <td>{{ h.siteWeb }}</td>
-                    <td>{{ h.telPro }}</td>
-                    <td>{{ h.emailPro }}</td>
-                    <td>{{ h.pageAcc }}<br>{{h.habillageAcc }}<br>{{h.banniereAcc }}<br>{{h.pageTheme }}<br>{{h.banniereThe }}<br>{{h.vignetteThe }}<br>{{h.pageArticle }}<br>{{h.banniereArt }}<br>{{h.vignetteArt }}</td>
-                    <td> {{ h.sponsTheme|join('\n')| nl2br}} </td>
-                    <td> {{ h.artTheme|join('\n')| nl2br}} </td>
-                    {#<td>{{ h.article | slice(0, 30) ~ ' ...' }}</td>
-                    <td>{{ h.theme.nom }}</td>#}
-                    <td><a href="{{ path('form_delete4', { 'id': h.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                    <td>{{ p.nom }}</td>
+                    <td>{{ p.fonction }}</td>
+                    <td>{{ p.telPerso }}</td>
+                    <td>{{ p.emailPerso }}</td>
+                    <td>{{ p.raisonSocial }}</td>
+                    <td>{{ p.siteWeb }}</td>
+                    <td>{{ p.telPro }}</td>
+                    <td>{{ p.emailPro }}</td>
+                    <td>{{ p.proposition | slice(0, 20) ~ ' ...' }}</td>
+                    <td><img src="{{ asset('uploads/' ~ p.Path) }}"  width="80" height="80"></td>
+                    <td>{{ p.createdAt | date("m/d/Y H:i:s") }}</td>
+                    <td><a href="{{ path('form_delete2', { 'id': p.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
                 </tr>
             {% endfor %}
 
-            </table>
+        </table>
 
+        {#<td><a href="{{ path('td_add') }}"><span class="btn info" aria-hidden="true"> Ajouter </span></a></td>#}
+    </div>
+{% endblock %}
 
-            <table class="table table-bordered table-striped example" id="table2"  style="display: none">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Fonction</th>
-                        <th>Telephone</th>
-                        <th>Email</th>
-                        <th>Raison sociale</th>
-                        <th>Site web</th>
-                        <th>Telephone</th>
-                        <th>Email</th>
-                        <th>Contenu</th>
-                        <th>Theme</th>
-                        <th> </th>
-                        <th> </th>
-
-
-                    </tr>
-                </thead>
-
-                {% for a in pub %}
-                    <tr>
-
-                        <td>{{ a.nom }}</td>
-                        <td>{{ a.fonction }}</td>
-                        <td>{{ a.telPerso }}</td>
-                        <td>{{ a.emailPerso }}</td>
-                        <td>{{ a.raisonSocial }}</td>
-                        <td>{{ a.siteWeb }}</td>
-                        <td>{{ a.telPro }}</td>
-                        <td>{{ a.emailPro }}</td>
-                        <td>{{ a.article | slice(0, 30) ~ ' ...' }}</td>
-                        <td>{{ a.theme.nom }}</td>
-                        <td><a href="{{ path('published_edit', { 'id': a.id }) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
-                        <td><a href="{{ path('form_delete3', { 'id': a.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
-                    </tr>
-                {% endfor %}
-
-
-            </table>
-
-
-
-            <table class="table table-bordered table-striped exampl" id="table3"  style="display: none">
-                <thead>
-                <tr>
-                    <th>Commentaire</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                {% for c in comment %}
-                    <tr>
-
-                        <td>{{ c.commentaire | slice(0, 30)}}</td>
-                        <td>{{ c.nom }}</td>
-                        <td>{{ c.email }}</td>
-                        <td><a href="{{ path('form_delete', { 'id': c.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
-
-                    </tr>
-
-                {% endfor %}
-
-            </table>
-
-
-
-        </div>
-
-
-
-        {#<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>#}
-        <script>
-            $(document).ready(function () {
-                $('#ddlCategory').change(function () {
-                    if (this.value == "table1") {
-                        $('#table1').show();
-                        $('#table2').hide();
-                        $('#table3').hide();
-                        $('#table4').hide();
-                        $('#table1_wrapper').show();
-                        $('#table2_wrapper').hide();
-                        $('#table3_wrapper').hide();
-                        $('#table4_wrapper').hide();
-                    } else  if (this.value == "table2")
-                    {
-                        $('#table1').hide();
-                        $('#table2').show();
-                        $('#table3').hide();
-                        $('#table4').hide();
-                        $('#table1_wrapper').hide();
-                        $('#table2_wrapper').show();
-                        $('#table3_wrapper').hide();
-                        $('#table4_wrapper').hide();
-                    } else  if (this.value == "table4")
-                    {
-                        $('#table1').hide();
-                        $('#table2').hide();
-                        $('#table3').hide();
-                        $('#table4').show();
-                        $('#table1_wrapper').hide();
-                        $('#table2_wrapper').hide();
-                        $('#table4_wrapper').show();
-                        $('#table3_wrapper').hide();
-                    }
-                    else  if (this.value == "table3")
-                    {
-                        $('#table1').hide();
-                        $('#table2').hide();
-                        $('#table3').show();
-                        $('#table4').hide();
-                        $('#table1_wrapper').hide();
-                        $('#table2_wrapper').hide();
-                        $('#table4_wrapper').hide();
-                        $('#table3_wrapper').show();
-                    }
-
-                    else
-                    {
-                        $('#table1').hide();
-                        $('#table2').hide();
-                        $('#table3').hide();
-                        $('#table4').hide()
-                      $('#table1_wrapper').hide();
-                        $('#table4_wrapper').hide();
-                        $('#table2_wrapper').hide();
-                        $('#table3_wrapper').hide();
-                    }
-
-                });
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table1').dataTable( {
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+                }
             });
-        </script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#table1').dataTable( {
-                    "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
-                    }
-                });
-            } );
-            $(document).ready(function() {
-                $('#table2').dataTable( {
-                    "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
-                    }
-                });
-            } );
-            $(document).ready(function() {
-                $('#table3').dataTable( {
-                    "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
-                    }
-                });
-            } );
-            $(document).ready(function() {
-                $('#table4').dataTable( {
-                    "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
-                    }
-                });
-            } );
-
-        </script>
-    <script src="{{ asset('js/admin.js') }}"></script>
-    <script src="{{ asset('js/pages/index.js') }}"></script>
+        } );
 
 
-    </section>
+    </script>
 
-    </body>
-</html>
+{% endblock %}

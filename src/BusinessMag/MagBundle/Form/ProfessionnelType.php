@@ -15,10 +15,15 @@ class ProfessionnelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('raisonSocial', 'text')
-            ->add('telephone', 'text')
-            ->add('adresse', 'text')
-            ->add('lien', 'text')
+            ->add('raisonSocial', 'text',array('required'=> false))
+            ->add('codeFirm', 'text',array('required'=> false))
+            ->add('file', 'file', array('label' => 'Logo', 'required' => false ))
+            ->add('telephone', 'text',array('required'=> false))
+            ->add('adresse', 'text',array('required'=> false))
+            ->add('lien', 'text',array('required'=> false))
+            ->add('published', 'checkbox', array('label'=>'Publié', 'required'=> false))
+            ->add('dateDebut', 'date', array('label' => 'Date Début', 'input'  => 'datetime', 'widget' => 'single_text'))
+            ->add('dateFin', 'date', array('label' => 'Date Fin', 'input'  => 'datetime', 'widget' => 'single_text'))
             ->add('Valider',      'submit')
         ;
     }

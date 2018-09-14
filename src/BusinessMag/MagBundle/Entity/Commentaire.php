@@ -3,11 +3,12 @@
 namespace BusinessMag\MagBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Commentaire
  *
- * @ORM\Table()
+ * @ORM\Table("commentaire")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\CommentaireRepository")
  */
 class Commentaire
@@ -25,6 +26,7 @@ class Commentaire
      * @var string
      *
      * @ORM\Column(name="commentaire", type="text")
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $commentaire;
 
@@ -32,6 +34,8 @@ class Commentaire
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=25)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
+     *
      */
     private $nom;
 
@@ -39,10 +43,33 @@ class Commentaire
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=40)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $email;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     *
+     */
+    private $createdAt;
+    
+    /**
+     * @var Article
+     *
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="BusinessMag\MagBundle\Entity\Article", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true , onDelete="SET NULL")
+     *
+     * 
+     */
+    private $article;
 
+    public function __construct(){
+        $this->createdAt= new\DateTime();
+    }
     /**
      * Get id
      *
@@ -120,5 +147,45 @@ class Commentaire
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+
+    /**
+     * Set article
+     *
+     * @param \BusinessMag\MagBundle\Entity\Article $article
+     * @return Commentaire
+     */
+    public function setArticle(\BusinessMag\MagBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \BusinessMag\MagBundle\Entity\Article 
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Habillage
  *
- * @ORM\Table()
+ * @ORM\Table("habillage")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\HabillageRepository")
  */
 class Habillage
@@ -35,6 +35,22 @@ class Habillage
      */
     private $type;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="raisonSocial", type="string", length=255)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
+     */
+    private $raisonSocial;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codeFirm", type="string", length=10)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
+     */
+    private $codeFirm;
 
     /**
      * @var string
@@ -46,7 +62,6 @@ class Habillage
     /**
      * @var Theme
      *
-     * @Assert\valid()
      * @Assert\Type(type="MagBundle\Entity\Theme"  )
      * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
@@ -54,6 +69,39 @@ class Habillage
      */
 
     private $theme;
+
+    /**
+     * @var \string
+     *
+     * @ORM\Column(name=" published ", type="string", nullable=true)
+     *
+     */
+    private $published;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     *
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datePub", type="datetime", nullable=true)
+     *
+     */
+    private $dateDebut;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFin", type="datetime", nullable=true)
+     *
+     */
+    private $dateFin;
 
 
 
@@ -127,20 +175,103 @@ class Habillage
         $this->theme = $theme;
     }
 
+    /**
+     * @return string
+     */
+    public function getRaisonSocial()
+    {
+        return $this->raisonSocial;
+    }
+
+    /**
+     * @param string $raisonSocial
+     */
+    public function setRaisonSocial($raisonSocial)
+    {
+        $this->raisonSocial = $raisonSocial;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCodeFirm()
+    {
+        return $this->codeFirm;
+    }
+
+    /**
+     * @param string $codeFirm
+     */
+    public function setCodeFirm($codeFirm)
+    {
+        $this->codeFirm = $codeFirm;
+    }
+
+    /**
+     * @return string
+     */
+    public function isPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param string $published
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+    }
 
 
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * @param \DateTime $dateDebut
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+    }
 
 
+    /**
+     * @return \DateTime
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
 
-
-
-
-
-
-
-
-
-
+    /**
+     * @param \DateTime $dateFin
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    }
 
 
 

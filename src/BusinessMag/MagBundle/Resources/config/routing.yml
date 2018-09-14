@@ -1,55 +1,93 @@
 mag_homepage:
-    path:     /hello/{name}
+    path:     /
     defaults: { _controller: MagBundle:Default:index }
+
+backoffice:
+    path:       /admin
+    defaults:   { _controller: MagBundle:Default:Backoffice }
+
+
+devenirpartenaire_add:
+    path:       /devenirpartenaire/add
+    defaults:   { _controller: MagBundle:DevenirPartenaire:add }
+devenirpartenaire_edit:
+    path:       /devenirpartenaire/edit
+    defaults:   { _controller: MagBundle:DevenirPartenaire:edit }
+devenirpartenaire_list:
+    path:       /devenirpartenaire/list
+    defaults:   { _controller: MagBundle:DevenirPartenaire:list }
+devenirpartenaire_delete:
+    path:       /devenirpartenaire/delete/{id}
+    defaults:   { _controller: MagBundle:DevenirPartenaire:delete }
+devenirpartenaire_show:
+    path:       /devenirpartenaire/show/{id}
+    defaults:   { _controller: MagBundle:DevenirPartenaire:show }
+
+detail_article:
+    path:       /detail/article/{id}
+    defaults:   { _controller: MagBundle:Article:detailArticle}
+
+
+
+
+publierarticle_add:
+    path:       /publierarticle/add
+    defaults:   { _controller: MagBundle:PublierArticleClient:add }
+publierarticle_edit:
+    path:       /publierarticle/edit/{id}
+    defaults:   { _controller: MagBundle:PublierArticleClient:edit }
+publierarticle_list:
+    path:       /publierarticle/list
+    defaults:   { _controller: MagBundle:PublierArticleClient:list }
+publierarticle_delete:
+    path:       /publierarticle/delete/{id}
+    defaults:   { _controller: MagBundle:PublierArticleClient:delete }
+
+
+
+laissercomment_add:
+    path:       /laissercomment/add
+    defaults:   { _controller: MagBundle:LaisserCommentaire:add }
+laissercomment_list:
+    path:       /laissercomment/list
+    defaults:   { _controller: MagBundle:LaisserCommentaire:list }
+laissercomment_show:
+    path:       /laissercomment/show/{id}
+    defaults:   { _controller: MagBundle:LaisserCommentaire:show }
+laissercomment_delete:
+    path:       /laissercomment/delete/{id}
+    defaults:   { _controller: MagBundle:LaisserCommentaire:delete }
+
 
 
 annonceur_add:
     path:       /annonceur/add
-    defaults:   { _controller: MagBundle:Formulaire:addAnnonceur }
+    defaults:   { _controller: MagBundle:DevenirAnnonceur:add }
+annonceur_list:
+    path:       /annonceur/list
+    defaults:   { _controller: MagBundle:DevenirAnnonceur:list }
 annonceur_fill:
     path:       /annonceur/fill
-    defaults:   { _controller: MagBundle:Formulaire:annonceur }
+    defaults:   { _controller: MagBundle:DevenirAnnonceur:fill }
 annonceur_save:
     path:       /annonceur/save
-    defaults:   { _controller: MagBundle:Formulaire:saveAnnonceur }
-
-
-
-
-form_list:
-    path:       /form/list
-    defaults:   { _controller: MagBundle:Formulaire:list }
-form_delete:
-    path:       /form/delete/{id}
-    defaults:   { _controller: MagBundle:Formulaire:delete }
-form_delete2:
-    path:       /form/delete2/{id}
-    defaults:   { _controller: MagBundle:Formulaire:delete2 }
-form_delete3:
-    path:       /form/delete3/{id}
-    defaults:   { _controller: MagBundle:Formulaire:delete3 }
-form_delete4:
-    path:       /form/delete4/{id}
-    defaults:   { _controller: MagBundle:Formulaire:delete4 }
-
-
-
-published_list:
-    path:       /published/list
-    defaults:   { _controller: MagBundle:PublierArticle:list }
-published_edit:
-    path:       /published/edit/{id}
-    defaults:   { _controller: MagBundle:PublierArticle:edit }
-published_delete:
-    path:       /published/delete/{id}
-    defaults:   { _controller: MagBundle:PublierArticle:delete }
+    defaults:   { _controller: MagBundle:DevenirAnnonceur:save }
+annonceur_delete:
+    path:       /annonceur/delete/{id}
+    defaults:   { _controller: MagBundle:DevenirAnnonceur:delete }
+annonceur_show:
+    path:       /annonceur/show/{id}
+    defaults:   { _controller: MagBundle:DevenirAnnonceur:show }
 
 
 
 
 contenu_add:
     path:       /contenu/add
-    defaults:   { _controller: MagBundle:Article:Add }
+    defaults:   { _controller: MagBundle:Article:add }
+contenu_addForm:
+    path:       /contenu/addForm
+    defaults:   { _controller: MagBundle:Article:AddForm }
 contenu_list:
     path:       /contenu/list
     defaults:   { _controller: MagBundle:Article:list }
@@ -62,6 +100,18 @@ contenu_delete:
     path:       /contenu/delete/{id}
     defaults:   { _controller: MagBundle:Article:delete }
 
+generate_pdf:
+    path:       /pdf/{id}
+    defaults:   { _controller: MagBundle:Article:pdf }
+
+recherche_article:
+    path:       /recherche
+    defaults:   { _controller: MagBundle:Article:rechercheTraitement }
+
+articles_by_theme:
+    path:       /articles/{theme}
+    defaults:   { _controller: MagBundle:Article:listeArticlesByTheme } 
+ 
 
 
 
@@ -81,6 +131,11 @@ theme_edit:
 theme_delete:
     path:       /theme/delete/{id}
     defaults:   { _controller: MagBundle:Theme:delete }
+
+themeForm_delete:
+    pattern:  /theme/{id}/delete
+    defaults: { _controller: MagBundle:Theme:deleteForm }
+    requirements: { _method: post|delete }
 
 
 
@@ -127,9 +182,6 @@ pro_delete:
 
 
 
-devenirpartenaire_add:
-    path:       /devenirpartenaire/add
-    defaults:   { _controller: MagBundle:Formulaire:addPartenaire }
 
 partenaires_add:
     path:       /partenaires/add
@@ -185,11 +237,6 @@ apropos_delete:
 
 
 
-
-habillage_add_test:
-    path:      /habillage/test
-    defaults:  { _controller: MagBundle:Habillage:test }
-
 habillage_add:
     path:       /habillage/add
     defaults:   { _controller: MagBundle:Habillage:add }
@@ -206,4 +253,18 @@ habillage_delete:
     path:       /habillage/delete/{id}
     defaults:   { _controller: MagBundle:Habillage:delete }
 
+success:
+    path:       /success
+    defaults:   { _controller: MagBundle:Default:success }
+
+
+routingArticle:
+  resource: "@MagBundle/Resources/config/routing/routingPublierArticle.yml"
+  prefix: /
+routingDevenirAnnonceur:
+  resource: "@MagBundle/Resources/config/routing/routingDevenirAnnonceur.yml"
+  prefix: /
+routingDevenirPartenaire:
+  resource: "@MagBundle/Resources/config/routing/routingDevenirPartenaire.yml"
+  prefix: /
 

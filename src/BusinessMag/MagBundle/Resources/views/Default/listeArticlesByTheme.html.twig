@@ -1,0 +1,86 @@
+{% extends '::front.html.twig' %}
+
+        {% block body %}
+      
+{% set trans_day_hash = { 
+        "January": "Janvier", 
+        "February": "Février", 
+        "March": "Mars", 
+        "April": "Avril", 
+        "May": "Mai", 
+        "June": "Juin", 
+        "July": "Juillet",
+        "August":"Août",
+        "September":"Septembre",
+        "October":"Octobre",
+        "November":"Novembre",
+        "December":"Décembre",
+        
+
+              
+    } 
+%}
+
+<!-- carousel -->
+
+
+
+
+<!-- articles -->
+
+
+<div class="container articles">
+  <div class="row">
+  <div class="col-lg-6">
+    {% if articles|length==0  %}
+     <div class="alert alert-warning">Aucun theme pour cet article</div>
+    {% endif%}
+  </div>
+</div>
+  <div class="row">
+  {% for article in articles %}
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <div class="well" id="">
+        <img src="{{asset('uploads/'~ article.path)}}" alt="image-1" class="no-print">
+        <a href="{{path('articles_by_theme',{'theme':article.theme.id})}}" type="button" name="button" class="btn theme-btn" >{{article.theme.nom }}</a>
+        <h4 class="title-intro">{{article.titre|raw}}</h4>
+        <p class="texte-intro">{{article.texteIntro|striptags|slice(1,128)}} ...{{article.id}}</p>
+        <div class="row suite">
+          <a href="{{path('detail_article',{'id':article.id})}}" type="button" class="btn-suite">Lire la suite</a>
+        </div>
+        <div class="row ">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 icone">
+            <span class="glyphicon glyphicon-share g-plus" data-action="share"></span>
+            <a href="{{path('generate_pdf',{'id':article.id})}}" target="_blank" class="icon-glyph"><span  name="impression{{article.id}}" class="glyphicon glyphicon-print"></span></a>
+
+            <span class="glyphicon glyphicon-time"></span>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 date">
+       
+            <p class="date-article">Post&eacute le {{article.createdAt|date('d')}} {{trans_day_hash[article.createdAt|date('F')]}} {{article.createdAt|date('Y')}}</p>
+            <div class="text-article" style="display: none;">{{article.texteArticle|raw}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  </div>
+
+</div>
+
+<!-- articles -->
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+

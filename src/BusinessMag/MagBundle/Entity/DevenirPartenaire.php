@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * DevenirPartenaire
  *
- * @ORM\Table()
+ * @ORM\Table("devenirpartenaire")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\DevenirPartenaireRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -31,6 +31,7 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=25)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $nom;
 
@@ -38,6 +39,7 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="fonction", type="string", length=25)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $fonction;
 
@@ -45,6 +47,7 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="telPerso", type="string", length=16)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $telPerso;
 
@@ -52,6 +55,7 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="emailPerso", type="string", length=40)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $emailPerso;
 
@@ -59,6 +63,7 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="raisonSocial", type="string", length=40)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $raisonSocial;
 
@@ -66,6 +71,7 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="siteWeb", type="string", length=50)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $siteWeb;
 
@@ -73,6 +79,7 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="telPro", type="string", length=16)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $telPro;
 
@@ -80,6 +87,7 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="emailPro", type="string", length=40)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $emailPro;
 
@@ -87,8 +95,25 @@ class DevenirPartenaire
      * @var string
      *
      * @ORM\Column(name="proposition", type="text")
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $proposition;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     *
+     *
+     */
+    private $createdAt;
+
+    
+    public function __construct()
+    {
+       $this->createdAt=new \DateTime();
+    }
 
 
     /**
@@ -308,6 +333,22 @@ class DevenirPartenaire
         return $this->proposition;
     }
 
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
 
 
 
@@ -319,7 +360,7 @@ class DevenirPartenaire
      */
     private $path;
     /**
-     * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
+     * @Assert\File(maxSize="2M", mimeTypes = {"image/jpg","image/pdf", "image/jpeg", "image/png", "image/gif"},
      *     mimeTypesMessage = "Merci d'envoyer un fichier au format .jpg ou .gif")
      *
      */

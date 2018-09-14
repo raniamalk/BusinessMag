@@ -3,11 +3,12 @@
 namespace BusinessMag\MagBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * TexteDescriptif
  *
- * @ORM\Table()
+ * @ORM\Table("textedescriptif")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\TexteDescriptifRepository")
  */
 class TexteDescriptif
@@ -25,6 +26,7 @@ class TexteDescriptif
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
      */
     private $description;
 

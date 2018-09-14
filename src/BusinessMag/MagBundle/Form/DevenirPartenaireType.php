@@ -18,16 +18,16 @@ class DevenirPartenaireType extends AbstractType
             ->add('nom', 'text')
             ->add('fonction', 'text')
             ->add('telPerso', 'text')
-            ->add('emailPerso', 'text')
+            ->add('emailPerso','email')
             ->add('raisonSocial', 'text')
             ->add('siteWeb', 'text')
             ->add('telPro', 'text')
-            ->add('emailPro', 'text')
-            ->add('proposition', 'text')
+            ->add('emailPro','email')
+            ->add('proposition', 'textarea')
             ->add('file', 'file', array(
-                'label' => 'Votre document ou plaquette',
+                //'label' => 'Votre document ou plaquette',
                 'required' => false ))
-            ->add('Valider',      'submit')
+            //->add('Valider',      'submit')
         ;
     }
     

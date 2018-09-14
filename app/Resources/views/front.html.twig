@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        {% block meta %}{% endblock %}
+        <title>{% block title %}Business Mag{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+    <link rel="stylesheet" href="{{asset('css/index.css')}}">
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    <style type="text/css">
+    .share{
+      height: 40px;
+      width: 40px;
+      background-color: #ffea2b;
+      border-radius: 50%;
+      display: inline-block;
+      overflow: hidden;
+      text-align: center;}
+    .dot{
+      height: 30px;
+      width: 30px;
+      background-color: black;
+      border-radius: 50%;
+      display: inline-block;
+      overflow: hidden;
+      text-align: center;}
+    .icon-pub{
+      font-size: 20px;color: white;padding-top:5px;
+     }
+     .icon-pub-1{
+       padding-top:20%;color:black;font-size:25px
+     }
+         @media print
+{    
+   span,a, .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+    </style>
+<body>
+<!-- debut de recherche -->
+<div class="container-fluid no-print" style="background-color: #ffea2b;">
+  <div class="row"  >
+      <div class="col-md-12"> 
+      {#{% if((app.request.get('_route')=='front_publier_article') or (app.request.get('_route')=='front_devenir_annonceur'))%}
+      Zone de recherche
+      
+      {% endif %}
+      #}
+    </div>
+  </div>
+</div>
+   
+
+   <!-- fin de  recherche-->
+    <div class="logo no-print">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3"></div>
+                 <div class="col-md-3"></div> <div class="col-md-1"></div>
+                <div class="col-md-5" style="text-align: right;color:white;font-size: 14px;font-family: arial">
+                 <a href="{{path('front_publier_article')}}" style="color: white;"> Publier un article</a>
+                | <a href="{{path('front_devenir_annonceur')}}" style="color: white;">Devenir annonceur </a>/
+                <a href="{{path('front_devenir_partenaire')}}" style="color: white;"> Partenaire</a></div>
+
+                
+            </div>
+        </div>
+        <a href="{{path('mag_homepage')}}">
+        <img src="https://image.noelshack.com/fichiers/2018/28/3/1531322353-capture-d-ecran-2018-07-11-a-15-43-48.png" alt="logo" class="logo-img"></a>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+<nav class="navbar-acceuil" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+<div class="container">
+
+
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <div class="col-md-11 col-sm-11 col-xs-11">
+      <ul class="nav navbar-nav navbar-modif">
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Best Practices</a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.telecontact.ma/">La minute buzz</a></li>
+            <li><a href="http://www.telecontact.ma/">la note d'humeur</a></li>
+            <li><a href="http://www.telecontact.ma/">Le flash info</a></li>
+            <!-- <li class="divider"></li> -->
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspirations & tendances</a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.telecontact.ma/">Le point de vue des experts</a></li>
+            <li><a href="http://www.telecontact.ma/">Ma vie de ...</a></li>
+            <li><a href="http://www.telecontact.ma/">Immersion digitale</a></li>
+            <li><a href="http://www.telecontact.ma/">Evasion culturelle</a></li>
+            <li><a href="http://www.telecontact.ma/">Inspiration Deco & Mode</a></li>
+            <li><a href="http://www.telecontact.ma/">Santé et bien être</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Infographies</a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.telecontact.ma/">Best practice</a></li>
+            <li><a href="http://www.telecontact.ma/">Business club</a></li>
+            <li><a href="http://www.telecontact.ma/">L'entreprise du mois</a></li>
+            <li><a href="http://www.telecontact.ma/">Le repère des artistes</a></li>
+            <li><a href="http://www.telecontact.ma/">Une affaire qui roule</a></li>
+            <li><a href="http://www.telecontact.ma/">Au coeur des salons</a></li>
+            <li><a href="http://www.telecontact.ma/">Escapade</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Glossaires</a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.telecontact.ma/">Action</a></li>
+            <li><a href="http://www.telecontact.ma/">Another action</a></li>
+            <li><a href="http://www.telecontact.ma/">Something else here</a></li>
+            <li><a href="http://www.telecontact.ma/">One more separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insolite</a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.telecontact.ma/">Best practice</a></li>
+            <li><a href="http://www.telecontact.ma/">Business club</a></li>
+            <li><a href="http://www.telecontact.ma/">L'entreprise du mois</a></li>
+            <li><a href="http://www.telecontact.ma/">Le repère des artistes</a></li>
+            <li><a href="http://www.telecontact.ma/">Une affaire qui roule</a></li>
+            <li><a href="http://www.telecontact.ma/">Au coeur des salons</a></li>
+            <li><a href="http://www.telecontact.ma/">Escapade</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Outils</a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.telecontact.ma/">Best practice</a></li>
+            <li><a href="http://www.telecontact.ma/">Business club</a></li>
+            <li><a href="http://www.telecontact.ma/">L'entreprise du mois</a></li>
+            <li><a href="http://www.telecontact.ma/">Le repère des artistes</a></li>
+            <li><a href="http://www.telecontact.ma/">Une affaire qui roule</a></li>
+            <li><a href="http://www.telecontact.ma/">Au coeur des salons</a></li>
+            <li><a href="http://www.telecontact.ma/">Escapade</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vidéos</a>
+          <ul class="dropdown-menu">
+            <li><a href="http://www.telecontact.ma/">Best practice</a></li>
+            <li><a href="http://www.telecontact.ma/">Business club</a></li>
+            <li><a href="http://www.telecontact.ma/">L'entreprise du mois</a></li>
+            <li><a href="http://www.telecontact.ma/">Le repère des artistes</a></li>
+            <li><a href="http://www.telecontact.ma/">Une affaire qui roule</a></li>
+            <li><a href="http://www.telecontact.ma/">Au coeur des salons</a></li>
+            <li><a href="http://www.telecontact.ma/">Escapade</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+    <div class="col-md-1 col-sm-1 col-xs-1">
+      <button type="button" name="button" id="search-icone"><i class="glyphicon glyphicon-search"></i></button>
+    </div>
+
+  </div><!-- /.navbar-collapse -->
+
+</div>
+
+</nav>
+
+
+
+<!-- search -->
+
+<div id="search-bar" style="display: none;">
+  <div class="container">
+    <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <h2>Tapez votre recherche ici</h2>
+               {% render(controller('MagBundle:Article:recherche')) %}
+
+          </div>
+          <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>
+        {% block body %}{% endblock %}
+
+
+
+
+<!-- footer -->
+
+                        {% render(controller('MagBundle:Default:footer')) %}
+
+
+<!-- footer -->
+
+
+
+
+
+ 
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    {#<script type='text/javascript' src="java.js"></script>#}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("#search-icone").click(function(){
+        $("#search-bar").toggle();
+    });
+});
+
+
+</script>
+ {% block javascripts %}{% endblock %}
+</body>
+</html>
+
+

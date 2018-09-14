@@ -22,7 +22,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use FOS\UserBundle\Model\UserInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 
@@ -38,7 +39,7 @@ class FormulaireController  extends Controller
         $form->handleRequest($request);
         $formView = $form->createView();
 
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
 
 
             $em->persist($devPart);
@@ -89,6 +90,28 @@ class FormulaireController  extends Controller
         return $this->render('MagBundle:Default:FormulaireList.html.twig',array('partenaire'=>$partenaire, 'pub'=>$published,'annonceur'=>$annonceur,'comment'=>$comment));
 
     }
+
+    public function DevenirPartenaireListAction(Request $request){
+
+
+
+        $repository = $this->getDoctrine()->getRepository('MagBundle:DevenirPartenaire');
+        $partenaire = $repository->findAll();
+
+        $repository = $this->getDoctrine()->getRepository('MagBundle:PublierArticle');
+        $published = $repository->findAll();
+
+
+        $repository = $this->getDoctrine()->getRepository('MagBundle:DevenirAnnonceur');
+        $annonceur = $repository->findAll();
+
+        $repository = $this->getDoctrine()->getRepository('MagBundle:Commentaire');
+        $comment = $repository->findAll();
+
+        return $this->render('MagBundle:Default:FormulaireList.html.twig',array('partenaire'=>$partenaire, 'pub'=>$published,'annonceur'=>$annonceur,'comment'=>$comment));
+
+    }
+
 
     /*    public function editAction(Request $request,PublierArticle $publierArticle,DevenirPartenaire $devenirpartenaire,Commentaire $commentaire,$id)
         {

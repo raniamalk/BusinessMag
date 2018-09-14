@@ -1,0 +1,93 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Devenir Partenaire  {% endblock %}
+{% block pagetitle %} <h3> Devenir Partenaire </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"> Formulaire </li>
+        <li class="breadcrumb-item">Devenir Partenaire </li>
+        <li class="breadcrumb-item active"><a href="{{ path('devenirpartenaire_list') }}">Details</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="table3">
+                        <tbody>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ entity.nom}}</td>
+                        </tr>
+                        <tr>
+                            <th>Fonction</th>
+                            <td>{{ entity.fonction }}</td>
+                        </tr>
+                        <tr>
+                            <th>Téléphone Portable</th>
+                            <td>{{ entity.telPerso }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email Perso</th>
+                            <td>{{ entity.emailPerso }}</td>
+                        </tr>
+                        <tr>
+                            <th>Raison Sociale</th>
+                            <td>{{ entity.raisonSocial }}</td>
+                        </tr>
+                        <tr>
+                            <th>Site Web</th>
+                            <td>{{ entity.siteWeb }}</td>
+                        </tr>
+                        <tr>
+                            <th>Téléphone Fixe</th>
+                            <td>{{ entity.telPro }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email Pro</th>
+                            <td>{{ entity.emailPro }}</td>
+                        </tr>
+                        <tr>
+                            <th>La proposition</th>
+                            <td>{{ entity.proposition }}</td>
+                        </tr>
+                        <tr>
+                            <th>Document</th>
+                            <td><img src="{{ asset('uploads/' ~ entity.Path) }}"  width="80" height="80"></td>
+                            {#<td>{{ entity.proposition }}</td>#}
+                        </tr>
+                        <tr>
+                            <th>Date création</th>
+                            <td>{{ entity.createdAt| date("d/m/Y") }}</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('.example').dataTable();
+                    } );
+
+                </script>
+
+            </div>
+
+        </div>
+        <td><a href="{{ path('devenirpartenaire_list') }}"><span class="btn info" aria-hidden="true"> Retour </span></a></td>
+    </div>
+
+    </div>
+
+
+{% endblock %}
+
+

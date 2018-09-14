@@ -1,0 +1,86 @@
+{% extends 'MagBundle::FormsBase.html.twig' %}
+{% block title %} Historique Devenir Partenaire  {% endblock %}
+{% block pagetitle %} <h3> Historique Devenir Partenaire </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"> Formulaire </li>
+        <li class="breadcrumb-item">Devenir Partenaire </li>
+        <li class="breadcrumb-item active"><a href="{{ path('devenirpartenaire_list') }}">Historique</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Fonction</th>
+                            {#<th>Téléphone portable</th>
+                            <th>Email</th>#}
+                            <th>Raison sociale</th>
+                           {# <th>Site web</th>
+                            <th>Téléphone fixe</th>
+                            <th>Email</th>#}
+                            <th>Proposition</th>
+                            <th>Document</th>
+                            <th>Date creation</th>
+                            <th> </th>
+                            <th> </th>
+
+                        </tr>
+                        </thead>
+                        {% for p in partenaire %}
+                            <tr>
+
+                                <td>{{ p.nom }}</td>
+                                <td>{{ p.fonction }}</td>
+                                {#<td>{{ p.telPerso }}</td>
+                                <td>{{ p.emailPerso }}</td>#}
+                                <td>{{ p.raisonSocial }}</td>
+                                {#<td>{{ p.siteWeb }}</td>
+                                <td>{{ p.telPro }}</td>
+                                <td>{{ p.emailPro }}</td>#}
+                                <td>{{ p.proposition | slice(0, 20) ~ ' ...' }}</td>
+                                <td><img alt="pas d'image" src="{{ asset('uploads/' ~ p.Path) }}"  width="80" height="80"></td>
+                                <td>{{ p.createdAt | date("d/m/Y ") }}</td>
+                                <td><a href="{{ path('devenirpartenaire_show', { 'id': p.id }) }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></td>
+                                <td><a href="{{ path('devenirpartenaire_delete', { 'id': p.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').dataTable( {
+                "order": [[ 5, "desc" ]],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+                }
+            });
+        } );
+
+
+    </script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
+    <script src="{{ asset('js/front.js')}}"></script>
+
+{% endblock %}

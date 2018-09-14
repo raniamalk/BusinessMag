@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Partenaires
  *
- * @ORM\Table()
+ * @ORM\Table("partenaires")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\PartenairesRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -38,6 +38,14 @@ class Partenaires
      * @ORM\Column(name="siteWeb", type="string", length=100)
      */
     private $siteWeb;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updateddAt", type="datetime", nullable=true)
+     *
+     */
+    private $updateddAt;
 
 
     /**
@@ -88,6 +96,23 @@ class Partenaires
     {
         $this->siteWeb = $siteWeb;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdateddAt()
+    {
+        return $this->updateddAt;
+    }
+
+    /**
+     * @param \DateTime $updateddAt
+     */
+    public function setUpdateddAt($updateddAt)
+    {
+        $this->updateddAt = $updateddAt;
+    }
+
 
 
 

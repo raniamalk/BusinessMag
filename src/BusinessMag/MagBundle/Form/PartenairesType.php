@@ -19,6 +19,7 @@ class PartenairesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('partenaires')
             ->add('siteWeb')
             ->add('file', 'file', array(

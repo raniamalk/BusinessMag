@@ -1,0 +1,379 @@
+{% extends '::front.html.twig' %}
+
+{% block body %}
+
+{#<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1" style="">
+      <div class="share"><a href=""><i class="fa fa-share-alt" style="padding-top:20%;color:black;font-size:25px"></i></a></div><br>
+
+      <div style="" class="dot">
+        <a href=""><i class="fa fa-2x fa-facebook icon-pub" ></i></a>
+      </div><br>
+      <div class="dot">
+         <a href=""><i class="fa fa-whatsapp icon-pub"></i></a>
+        </div><br>
+        <div class="dot">
+         <a href=""><i class="fa fa-linkedin icon-pub"></i></a>
+      </div><br>
+      <div class="dot">
+         <a href=""><i class="fa fa-dropbox icon-pub"></i></a>
+      </div><br>
+      <div class="dot">
+        <a href=""><i class="fa fa-google-plus icon-pub"></i></a>
+        </div><br><br>
+        <div class="share"> 
+           <a href=""><i class="glyphicon glyphicon-print icon-pub-1"></i></a>        
+        </div><br><br>
+      <div class="share">
+         <a href=""><i class="glyphicon glyphicon-time icon-pub-1"></i></a>
+        </div><br>
+      
+
+    
+    </div>
+    <div class="col-md-7" style="">
+      {{article.textIntro}}<br>
+      {{var_dump(article)}}
+      {{article.titre|raw}}<br>
+      <div style="background-color: red">{{article.texteArticle</div>
+    <div class="col-md-4" style="">4</div>
+
+  </div>
+</div>#}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="java.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+
+<body>
+
+
+
+<section class="menu-article">
+  <div class="container">
+   <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+      <div class="logo-articles" align="center">
+          <img src="https://image.noelshack.com/fichiers/2018/36/1/1535984052-1532345138-sans-titre-1.png" class="img-responsive" alt="logo-articles">
+      </div>
+    </div>
+
+    <div class="menu col-lg-10 col-md-10 col-sm-12 col-xs-12">
+      <div id="myCarousel" class="carousel slide" Align="center">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <a class="nom-article" href="http://www.telecontact.ma/">Maisons</a>
+            <a href="http://www.telecontact.ma/">Immobilier </a>
+            <a href="http://www.telecontact.ma/">Santé </a>
+            <a href="http://www.telecontact.ma/">Voyage </a>
+            <a href="http://www.telecontact.ma/"> Auto-moto </a>
+            <a href="http://www.telecontact.ma/">Emploi</a>
+          </div>
+
+          <div class="item">
+            <a href="http://www.telecontact.ma/">Evénementiel</a>
+            <a href="http://www.telecontact.ma/">Finance</a>
+            <a href="http://www.telecontact.ma/">Bien-être</a>
+            <a href="http://www.telecontact.ma/">Animaux</a>
+            <a href="http://www.telecontact.ma/">Ecologie</a>
+            <a href="http://www.telecontact.ma/">Business</a>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="row" align="center">
+      <p>8 Outils pour faciliter votre référencement naturel</p>
+      <a href="#" class="lien-titre-article">Outils</a>
+    </div>
+
+  </div>
+ </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="article">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 icones" align="center">
+        <div class="for-reponsive">
+          <a href="#" class="fa fa-share icones-principale" id="share"></a>
+          <div id="social-media" style="display: none;">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-whatsapp"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-dropbox"></a>
+            <a href="#" class="fa fa-google-plus"></a>
+          </div>
+          <a href="#" class="fa fa-file icones-principale"></a>
+          <a href="#" class="fa fa-clock-o icones-principale"></a>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-8 col-sm8 col-xs-12 texte-article">
+        <p>Haec dum oriens diu perferret, caeli reserato tepore Constantius consulatu suo septies et Caesaris ter egressus Arelate Valentiam petit, in Gundomadum et Vadomarium fratres Alamannorum reges arma moturus, quorum crebris excursibus vastabantur confines limitibus terrae Gallorum.
+          <br>
+          <br>
+          Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.
+
+          Post quorum necem nihilo lenius ferociens Gallus ut leo cadaveribus pastus multa huius modi scrutabatur. quae singula narrare non refert, me professione modum, quod evitandum est, excedamus.
+          <br>
+          <br>
+          Ardeo, mihi credite, Patres conscripti (id quod vosmet de me existimatis et facitis ipsi) incredibili quodam amore patriae, qui me amor et subvenire olim impendentibus periculis maximis cum dimicatione capitis, et rursum, cum omnia tela undique esse intenta in patriam viderem, subire coegit atque excipere unum pro universis. Hic me meus in rem publicam animus pristinus ac perennis cum C. Caesare reducit, reconciliat, restituit in gratiam.
+
+          Abusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.
+          <br>
+          <br>
+          Post emensos insuperabilis expeditionis eventus languentibus partium animis, quas periculorum varietas fregerat et laborum, nondum tubarum cessante clangore vel milite locato per stationes hibernas, fortunae saevientis procellae tempestates alias rebus infudere communibus per multa illa et dira facinora Caesaris Galli, qui ex squalore imo miseriarum in aetatis adultae primitiis ad principale culmen insperato saltu provectus ultra terminos potestatis delatae procurrens asperitate nimia cuncta foedabat. propinquitate enim regiae stirpis gentilitateque etiam tum Constantini nominis efferebatur in fastus, si plus valuisset, ausurus hostilia in auctorem suae felicitatis, ut videbatur.
+
+          Quod cum ita sit, paucae domus studiorum seriis cultibus antea celebratae nunc ludibriis ignaviae torpentis exundant, vocali sonu, perflabili tinnitu fidium resultantes. denique pro philosopho cantor et in locum oratoris doctor artium ludicrarum accitur et bybliothecis sepulcrorum ritu in perpetuum clausis organa fabricantur hydraulica, et lyrae ad speciem carpentorum ingentes tibiaeque et histrionici gestus instrumenta non levia.
+          <br>
+          Martinus agens illas provincias pro praefectis aerumnas innocentium graviter gemens saepeque obsecrans, ut ab omni culpa inmunibus parceretur, cum non inpetraret, minabatur se discessurum: ut saltem id metuens perquisitor malivolus tandem desineret quieti coalitos homines in aperta pericula proiectare.
+        </p>
+        <div class="well commentaire">
+          <h3>Laisser un commentaire</h3>
+          <p>Votre adresse de messagerie ne sera pas publiée.</p>
+          <input type="text" class="form-control" placeholder="Commentaire">
+          <input type="text" class="form-control" placeholder="Nom">
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 selection-professionnels">
+        <img src="https://image.noelshack.com/fichiers/2018/30/2/1532430152-capture-d-ecran-2018-07-24-a-11-43-09.png" alt="">
+        <button type="button" name="button">
+          Notre selection de professionnels
+        </button>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 img">
+            <img src="http://www.telecontact.ma/pubs/logos/L3211272.png" alt="">
+          </div>
+          <div class="col-lg-8 col-md-8 text">
+              <p>Raison sociale</p>
+              <div class="ligne"></div>
+              <p>Coordonnées</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 img">
+            <img src="http://www.telecontact.ma/pubs/logos/L3211272.png" alt="">
+          </div>
+          <div class="col-lg-8 col-md-8 text">
+              <p>Raison sociale</p>
+              <div class="ligne"></div>
+              <p>Coordonnées</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 img">
+            <img src="http://www.telecontact.ma/pubs/logos/L3211272.png" alt="">
+          </div>
+          <div class="col-lg-8 col-md-8 text">
+              <p>Raison sociale</p>
+              <div class="ligne"></div>
+              <p>Coordonnées</p>
+          </div>
+        </div>
+
+
+
+
+          <button type="button" name="button">
+            Consultez nos rubriques d'activités
+            <br>et faites votre choix !
+          </button>
+          <button type="button" name="button" class="rubrique"><a href="#">Rubrique 1 relative au thème</a></button>
+          <button type="button" name="button" class="rubrique"><a href="#">Rubrique 1 relative au thème</a></button>
+          <button type="button" name="button" class="rubrique"><a href="#">Rubrique 1 relative au thème</a></button>
+          <button type="button" name="button" class="rubrique"><a href="#">Rubrique 1 relative au thème</a></button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+<section class="back-next-article">
+  <div class="container">
+    <div class="row">
+
+      <div class="image-1 col-lg-6 col-md-6 col-sm-6 col-sx-6">
+        <a href="#"><span class="glyphicon glyphicon-arrow-left" style="color:#ffdc2e;"></span> &nbsp; &nbsp; Article précédent</a>
+        <p>" 10 conseils pour optimiser vos vidéos sur Youtube "</p>
+      </div>
+      <div class="image-2 col-lg-6 col-md-6 col-sm-6 col-sx-6">
+        <a href="#">Article suivant &nbsp; &nbsp; <span class="glyphicon glyphicon-arrow-right" style="color:#ffdc2e;"></a>
+        <p>" Entrepreneur : Boostez votre visibilité sur internet "</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer -->
+
+<footer class="footer">
+     <div id="contentFooter">
+       <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <img src="https://image.noelshack.com/fichiers/2018/28/3/1531322353-capture-d-ecran-2018-07-11-a-15-43-48.png" alt="logo">
+            </div>
+          </div>
+         <div class="row min">
+           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+             <p class="presentation">Denique Antiochensis ordinis vertices sub uno elogio iussit occidi ideo efferatus, quod ei celebrari vilitatem intempestivam urgenti, cum inpenderet inopia, gravius rationabili responderunt.</p>
+             <p class="titre">Suivez-nous</p>
+             <div class="wrapper">
+                 <a target="_blank" href="https://www.facebook.com/telecontactMA/"><i class="fa fa-2x fa-facebook-square"></i></a>
+                 <a target="_blank" href="https://www.youtube.com/user/TelecontactMaroc"><i class="fa fa-2x fa-youtube-play"></i></a>
+             </div>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+             <p class="titre">À propos</p>
+             <ul>
+               <li><a href="file:///Users/khalila/Desktop/wach%20TV%20site/index%202.html" target="_blank">Qui somme-nous</a></li>
+               <li><a href="#" target="_blank">Mentions légales</a></li>
+               <li><a href="#" target="_blank">CGV</a></li>
+               <li><a href="#" target="_blank">CGU</a></li>
+             </ul>
+             <br>
+             <p class="titre">Nos partenaires</p>
+             <ul>
+               <li><a href="#" target="_blank">Partenaire 1</a></li>
+               <li><a href="https://www.facebook.com/FemmePostive/?ref=br_rs" target="_blank">Partenaire 2</a></li>
+               <li><a href="http://www.telecontact.ma/" target="_blank">Partenaire 3</a></li>
+             </ul>
+             <br>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+             <p class="titre" target="_blank">Nos thèmes</p>
+             <ul>
+               <li><a href="#" target="_blank">Auto-Moto</a></li>
+               <li><a href="#" target="_blank">Animaux</a></li>
+               <li><a href="#" target="_blank">Bien-être</a></li>
+               <li><a href="#" target="_blank">Business</a></li>
+               <li><a href="#" target="_blank">Ecologie</a></li>
+               <li><a href="#" target="_blank">Emploi</a></li>
+               <li><a href="#" target="_blank">Evènementiel</a></li>
+               <li><a href="#" target="_blank">Finance</a></li>
+               <li><a href="#" target="_blank">Immobilier</a></li>
+               <li><a href="#" target="_blank">Maison</a></li>
+               <li><a href="#" target="_blank">Santé</a></li>
+               <li><a href="#" target="_blank">Voyage</a></li>
+             </ul>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+             <p class="titre">Contactez-nous</p>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.567846450357!2d-7.6571843152009595!3d33.51261898075621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2bdb7d77205%3A0x7af100b2ef4330f6!2sTelecontact!5e0!3m2!1sar!2s!4v1498662660590" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+             <p class="Adresse">Adresse : Business Center Sidi Maârouf, Lotissement Medersa n°1, Immeuble 1, 2ème Etage Zone Indus. Sidi Maârouf. Casablanca</p>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="container" id="copyrightFooter">
+       <div class="row">
+         <div class="col-md-3">
+           <small class="text-muted">© 2018 TELECONTACT</small>
+         </div>
+         <div class="col-md-6">
+         </div>
+         <div class="col-md-3">
+           <small class="text-muted">Mentions légales / Politique de Confidentialité</small>
+         </div>
+       </div>
+     </div>
+   </footer>
+
+<!-- footer -->
+
+
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("#search-icone").click(function(){
+        $("#search-bar").toggle();
+    });
+});
+
+$(document).ready(function(){
+    $("#share").click(function(){
+        $("#social-media").slideToggle("slow");
+    });
+});
+
+</script>
+
+
+
+
+</body>
+</html>
+
+
+{% endblock %}

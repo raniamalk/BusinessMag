@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProfessionnelRepository extends EntityRepository
 {
+
+	public function findProfess(){
+	
+    	$now =date('Y-m-d H:i:s');
+		$qb=$this->createQueryBuilder('a');
+		      $qb->where('a.published = :pub')
+		         ->andWhere('a.dateDebut <= :now')
+		         ->andWhere('a.dateFin >= :now')
+		         //->orderBy('a.createdAt','desc')
+		         //->setMaxResults(4)
+		         ->setParameter('pub',1)
+		         ->setParameter('now',$now);
+		    return $qb->getQuery()->getResult();
+	}
 }

@@ -1,0 +1,29 @@
+{% extends '::front.html.twig' %}
+
+
+  {% block body %}
+
+<div class="container">
+	<br><br>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+		 {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+                
+            {% endfor %}
+            
+		
+
+			</div>
+			<div class="col-md-2"></div>
+
+		</div>
+	</div>
+
+	<br><br>
+</div>
+{% endblock %}

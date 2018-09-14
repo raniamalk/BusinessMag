@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>BusinessMag</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <style type="text/css">
+            .date-article{text-align: right;}
+        </style>
+    </head>
+    <body>
+        {% set trans_day_hash = { 
+        "January": "Janvier", 
+        "February": "Février", 
+        "March": "Mars", 
+        "April": "Avril", 
+        "May": "Mai", 
+        "June": "Juin", 
+        "July": "Juillet",
+        "August":"Août",
+        "September":"Septembre",
+        "October":"Octobre",
+        "November":"Novembre",
+        "December":"Décembre",
+        
+
+              
+    } 
+%}
+        <h1>BusinessMag</h1>
+
+     <div class="container-fluid">
+     	<div class="row">
+     		<div class="col-lg-8" style="background-color: yellow;text-align: center;padding-bottom:7px">{{article.titre|raw}}</div>
+     	</div>
+<br>
+        <div class="row">
+            <div class="col-lg-8" style="">{{article.theme.nom}}</div>
+        </div>
+<br>
+     	<div class="row">
+     		<div class="col-lg-8" style="">{{article.texteIntro|raw}}</div>
+     	</div>
+<br>
+        
+         <div class="row">
+            <div class="col-lg-8" style="">{{article.texteArticle|raw}}</div>
+        </div>
+<br>
+        <p class="date-article">Posté le {{article.createdAt|date('d')}} {{trans_day_hash[article.createdAt|date('F')]}} {{article.createdAt|date('Y')}}</p>
+        
+     </div>
+
+        
+    </body>
+</html>

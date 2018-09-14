@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * PublierArticle
  *
- * @ORM\Table()
+ * @ORM\Table("publierarticle")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\PublierArticleRepository")
  */
 class PublierArticle
@@ -27,6 +27,7 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=25)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $nom;
 
@@ -34,6 +35,7 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="fonction", type="string", length=25)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $fonction;
 
@@ -41,6 +43,7 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="telPerso", type="string", length=16)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $telPerso;
 
@@ -48,6 +51,7 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="emailPerso", type="string", length=40)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $emailPerso;
 
@@ -55,6 +59,7 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="raisonSocial", type="string", length=40)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $raisonSocial;
 
@@ -62,6 +67,7 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="siteWeb", type="string", length=50)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $siteWeb;
 
@@ -69,6 +75,7 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="telPro", type="string", length=16)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $telPro;
 
@@ -76,6 +83,7 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="emailPro", type="string", length=40)
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $emailPro;
 
@@ -83,14 +91,17 @@ class PublierArticle
      * @var string
      *
      * @ORM\Column(name="article", type="text")
+     * @Assert\NotBlank(message="veuillez remplir ce champ")
      */
     private $article;
+
+//    @Assert\Type(type="MagBundle\Entity\Theme"  )
 
     /**
      * @var Theme
      *
-     * @Assert\valid()
-     * @Assert\Type(type="MagBundle\Entity\Theme"  )
+     *
+     *
      * @ORM\ManyToOne(targetEntity="Theme", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      *@ORM\JoinColumn(name="id_pa", referencedColumnName="id")
@@ -98,6 +109,20 @@ class PublierArticle
 
     private $theme;
 
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
+     *
+     */
+    private $createdAt;
+
+    public function __construct()
+    {
+       $this->createdAt=new \DateTime();
+    }
 
     /**
      * Get id
@@ -331,6 +356,24 @@ class PublierArticle
     {
         $this->theme = $theme;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+
 
 
 

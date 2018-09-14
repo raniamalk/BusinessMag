@@ -20,39 +20,75 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            /*->add ('theme',new ThemeType())*/
+
             ->add ('theme', 'entity', array(
                 'class' => 'MagBundle:Theme',
                 'property' => 'nom',
-                /*'multiple' => true,*/
                 'expanded' => true,
-            ))
-
-            ->add('titre', 'textarea'/*, array('attr' => array('name'=>'editor1','class' => 'ckeditor'))*/)
-
-            ->add('fileb', 'file', array(
-                'label' => 'Image en vedette',
-                'required' => false ))
-
-            ->add('texteIntro', 'textarea')
+                'required'    => false,))
 
             ->add('file', 'file', array(
                 'label' => 'Image intro',
+                'required'    => false ))
+            ->add('titreIntro', 'textarea', array(
                 'required' => false ))
 
-            ->add('texteArticle', 'textarea')
+            ->add('texteIntro', 'textarea', array(
+                'required' => false ))
+
+
 
             ->add('filea', 'file', array(
                 'label' => 'Image article',
                 'required' => false ))
-
+            ->add('titreArticle', 'textarea', array(
+                'required' => false ))
+            ->add('texteArticle', 'textarea',array(
+                'required' => false ))
             ->add ('rubrique', 'entity', array(
                 'class' => 'MagBundle:Rubrique',
                 'property' => 'nom',
                 'multiple' => true,
-                'expanded' => true,))
+                'expanded' => true,
+                'required' => false))
 
-            ->add('Valider',      'submit')
+
+
+            ->add('titre', 'textarea', array(
+                'required' => false ))
+            ->add('fileb', 'file', array(
+                'label' => 'Image en vedette',
+                'required' => false ))
+
+
+
+            ->add('datePub', 'date', array(
+                'label' => 'Date Début',
+                'input'  => 'datetime',
+                'widget' => 'single_text'))
+
+            ->add('dateFin', 'date', array(
+                'label' => 'Date Fin',
+                'input'  => 'datetime',
+                'widget' => 'single_text',
+                'required' => false))
+
+            ->add('datePubVed', 'date', array(
+                'required' => false,
+                'label' => 'Date Début',
+                'input'  => 'datetime',
+                'widget' => 'single_text',))
+
+            ->add('dateFinVed', 'date', array(
+                'required' => false,
+                'label' => 'Date Fin',
+                'input'  => 'datetime',
+                'widget' => 'single_text'))
+
+
+            ->add('published', 'checkbox', array('required' => false, 'label'=> 'Publié'))
+            ->add('vpublished', 'checkbox', array('required' => false, 'label'=> 'Publié'))
+
 
         ;
     }
@@ -75,3 +111,5 @@ class ArticleType extends AbstractType
         return 'businessmag_magbundle_article';
     }
 }
+
+

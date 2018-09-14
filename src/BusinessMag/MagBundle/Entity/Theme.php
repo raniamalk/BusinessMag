@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Theme
  *
- * @ORM\Table()
+ * @ORM\Table("theme")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\ThemeRepository")
  */
 class Theme
@@ -25,9 +25,33 @@ class Theme
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50)
+     *
      */
     private $nom;
 
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="theme", cascade={"remove"})
+     *
+     */
+    private $article;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="Habillage", mappedBy="theme", cascade={"remove"})
+     *
+     */
+    private $habillage;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="PublierArticle", mappedBy="theme", cascade={"remove"})
+     *
+     */
+    private $publierArticle;
 
     /**
      * Get id
@@ -61,4 +85,55 @@ class Theme
     {
         return $this->nom;
     }
+
+    /**
+     * @return string
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param string $article
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHabillage()
+    {
+        return $this->habillage;
+    }
+
+    /**
+     * @param string $habillage
+     */
+    public function setHabillage($habillage)
+    {
+        $this->habillage = $habillage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublierArticle()
+    {
+        return $this->publierArticle;
+    }
+
+    /**
+     * @param string $publierArticle
+     */
+    public function setPublierArticle($publierArticle)
+    {
+        $this->publierArticle = $publierArticle;
+    }
+
+
+
 }

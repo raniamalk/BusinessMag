@@ -1,0 +1,65 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Commentaire  {% endblock %}
+{% block pagetitle %} <h3> Commentaire </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"> Formulaire </li>
+        <li class="breadcrumb-item">Laisser un commentaire</li>
+        <li class="breadcrumb-item active"><a href="{{ path('laissercomment_show',{'id':id}) }}">Details</a></li>
+    </ul>
+{% endblock %}
+{% block body %}
+
+
+
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="table3">
+                        <tbody>
+                        <tr>
+                            <th>Commentaire</th>
+                            <td>{{ entity.commentaire}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ entity.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ entity.email }}</td>
+                        </tr>
+                            <th>Date création</th>
+                            <td>{{ entity.createdAt| date("d/m/Y") }}</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+
+
+                </div>
+
+
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('.example').dataTable();
+                    } );
+
+                </script>
+
+            </div>
+
+        </div>
+        <td><a href="{{ path('laissercomment_list') }}"><span class="btn info" aria-hidden="true"> Retour </span></a></td>
+    </div>
+
+    </div>
+
+
+{% endblock %}
+
+

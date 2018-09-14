@@ -1,19 +1,141 @@
 {% extends 'MagBundle::base.html.twig' %}
-{% block title %} Habillage {% endblock %}
-
+{% block title %} Produits Display {% endblock %}
+{% block pagetitle %} <h3> Produits Display </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Insertion Web</li>
+        <li class="breadcrumb-item">Produits Display</li>
+        <li class="breadcrumb-item active"><a href="{{ path('habillage_edit', {'id':id}) }}">Modification</a></li>
+    </ul>
+{% endblock %}
 {% block body %}
+    <style>
+        input[type=radio]{ margin-right: 10px;}
+    </style>
 
-    <h3> Habillage </h3>
+   {# {{dump(entity)}}#}
+<form action="{{ path('habillage_edit',{'id': id }) }} " method="post" enctype="multipart/form-data" >
 
-    <div class="container">
-        <form action="{{ path('habillage_edit',{'id': ids }) }}" {{ form_enctype(form) }} method="POST" >
-            {{ form_widget(form) }}
-            <br><br>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal">
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Image </label>
+                        <div class="col-sm-9">
+                            <span><img align="center" src="{{ asset('upload/' ~ entity.Pathc)  }}" width="100%" height="100%"></span>
+                            <input class="form-control uploadBorder" type="file" name="file" id="file" value="{{entity.pathc}}" >
+                        </div>
 
-            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
-            {#<input class="btn btn-primary" type="submit" value="Enregistrer" />#}
-        </form>
+                    </div>
 
+                    <div class="form-group row ">
+                        <label class="col-sm-3 form-control-label">Type </label>
+                        <div class="col-sm-9 Htype">
+                            <div id="divType">
+                                <input id="optionsRadios1"  type="radio" value="Habillage" name="optradio" checked>
+                                <label for="optionsRadios1">Habillage</label>
+                            </div>
+                            <div id="divType">
+                                <input id="optionsRadios2" type="radio" value="Bannière page d'accueil" name="optradio">
+                                <label for="optionsRadios2">Bannière page d'accueil</label>
+                            </div>
+                            <div id="divType">
+                                <input id="optionsRadios3" type="radio" value="Bannière page thème" name="optradio">
+                                <label for="optionsRadios3">Bannière page thème</label>
+                            </div>
+                            <div id="divType">
+                                <input id="optionsRadios4" type="radio"value="Vignette page thème" name="optradio">
+                                <label for="optionsRadios4">Vignette page thème</label>
+                            </div>
+                            <div id="divType">
+                                <input id="optionsRadios5" type="radio" value="Bannière page article" name="optradio">
+                                <label for="optionsRadios5">Bannière page article</label>
+                            </div>
+                            <div id="divType">
+                                <input id="optionsRadios6" type="radio" value="Vignette page article" name="optradio">
+                                <label for="optionsRadios6">Vignette page article</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row rsbottom">
+                        <label class="col-sm-3 form-control-label">Raison Sociale </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="inputdefault" name="raisonSocial" type="text" value="{{entity.raisonSocial}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Code Firme </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="inputdefault" name="codeFirm" type="text" value="{{entity.codeFirm}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Lien </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="inputdefault" name="lien" type="text" value="{{entity.lien}}" >
+                        </div>
+                    </div>
+
+                    <div id="themesStyle" class="checkbox-inline form-group col-lg-15 row" >
+                        <label  for="inputdefault"class="col-sm-3 form-control-label">Thèmes </label><br>
+                        <div class="cb" id="listOfThemesstyle">
+                            {% for theme in themes %}
+
+                                <input  name="theme" type="checkbox" class="checkbox" value="{{ theme.id }}"{% if(entity.theme.nom==theme.nom) %}checked{% endif %}/>&nbsp; &nbsp;{{ theme.nom }}
+                                    <br>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div  class="form-group col-lg-15 row">
+                        <label class="col-sm-3 form-control-label">Publier </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="etatPub" name="etatPub" type="checkbox" {% if entity.published =='on'%}checked {%endif%}>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-15 row">
+                        <label class="col-sm-3 form-control-label">Date Début  </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="dateDebut" name="dateDebut" type="date" value="{{entity.dateDebut|date('Y-m-d')}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-15 row">
+                        <label class="col-sm-3 form-control-label">Date Fin  </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="dateFin" name="dateFin" type="date" value="{{entity.dateFin|date('Y-m-d')}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-4 offset-sm-3">
+                            <button type="submit" class="btn">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
+</form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $('.checkbox').on('change', function() {
+            $('.checkbox').not(this).prop('checked', false);
+        });
+    </script>
 
 {% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'MagBundle::base.html.twig' %}
+{% block title %} Modification d'un article publié {% endblock %}
+{#{% block test %} show me this {% endblock %}#}
+{% block pagetitle %} <h3>Modification d'un article publié </h3> {% endblock %}
+{% block pagenav %}
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">Formulaire</li>
+        <li class="breadcrumb-item">Publier Article</li>
+        <li class="breadcrumb-item active"><a href="{{ path('publierarticle_edit',{'id': ids }) }}">Modification</a></li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+
+    <form action="{{ path('publierarticle_edit',{'id': ids }) }}" {{ form_enctype(form) }} method="POST" >
+       {# {{ form_widget(form) }}
+        <br>
+        <div class="clearfix">
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+
+            #}{#<a id="delbtn" class='btn btn-primary' role="button" href="{{ path('published_delete', { 'id': ids }) }}">Supprimer</a>#}{#
+        </div>#}
+
+    {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+    {{ form_row(form._token) }}
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal">
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Nom </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Fonction </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.fonction, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Téléphone Portable </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.telPerso, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Email Perso </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.emailPerso, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Raison Sociale </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.raisonSocial, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Site Web </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.siteWeb, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Téléphone Fixe </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.telPro, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label">Email Générique </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.emailPro, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label"> Article </label>
+                        <div class="col-sm-9">
+                            {{ form_widget(form.article, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}
+                        </div>
+                    </div >
+                    <div class="form-group row themePAE">
+                        <label class="col-sm-3 form-control-label"> Thème </label>
+                        <div class="col-sm-9 themestyle" >
+                            {{ form_widget(form.theme, {'attr': {'class': 'form-control', 'id':'inputdefault'}}) }}<br><br><br><br><br>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <div class="col-sm-4 offset-sm-3">
+                            <button type="submit" class="btn ">Enregistrer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

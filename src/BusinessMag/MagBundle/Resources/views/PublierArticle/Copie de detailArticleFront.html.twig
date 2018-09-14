@@ -1,0 +1,45 @@
+{% extends '::front.html.twig' %}
+
+{% block body %}
+
+<div class="container-fluid">
+  <div class="row">
+  	<div class="col-md-1" style="">
+  		<div class="share"><a href=""><i class="fa fa-share-alt" style="padding-top:20%;color:black;font-size:25px"></i></a></div><br>
+
+  		<div style="" class="dot">
+  			<a href=""><i class="fa fa-2x fa-facebook icon-pub" ></i></a>
+  		</div><br>
+  		<div class="dot">
+  		   <a href=""><i class="fa fa-whatsapp icon-pub"></i></a>
+  	    </div><br>
+  	    <div class="dot">
+  		   <a href=""><i class="fa fa-linkedin icon-pub"></i></a>
+  		</div><br>
+  		<div class="dot">
+  		   <a href=""><i class="fa fa-dropbox icon-pub"></i></a>
+  		</div><br>
+  		<div class="dot">
+  		  <a href=""><i class="fa fa-google-plus icon-pub"></i></a>
+  	    </div><br><br>
+  	    <div class="share"> 
+           <a href=""><i class="glyphicon glyphicon-print icon-pub-1"></i></a>  	    
+        </div><br><br>
+  		<div class="share">
+  		   <a href=""><i class="glyphicon glyphicon-time icon-pub-1"></i></a>
+  	    </div><br>
+  		
+
+    
+  	</div>
+  	<div class="col-md-7" style="">
+  		{{article.textIntro}}<br>
+  		{{var_dump(article)}}
+  		{{article.titre|raw}}<br>
+  		<div style="background-color: red">{{article.texteArticle</div>
+  	<div class="col-md-4" style="">4</div>
+
+  </div>
+</div>
+
+{% endblock %}

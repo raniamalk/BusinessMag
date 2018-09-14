@@ -1,0 +1,63 @@
+<footer class="footer no-print">
+     <div id="contentFooter">
+       <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <img src="https://image.noelshack.com/fichiers/2018/28/3/1531322353-capture-d-ecran-2018-07-11-a-15-43-48.png" alt="logo">
+            </div>
+          </div>
+         <div class="row min">
+           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+             <p class="presentation">{{textDescriptif.description|raw}}</p>
+             <p class="titre">Suivez-nous</p>
+             <div class="wrapper">
+                 <a target="_blank" href="https://www.facebook.com/telecontactMA/"><i class="fa fa-2x fa-facebook-square"></i></a>
+                 <a target="_blank" href="https://www.youtube.com/user/TelecontactMaroc"><i class="fa fa-2x fa-youtube-play"></i></a>
+             </div>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+             <p class="titre">À propos</p>
+             <ul>
+               <li><a href="file:///Users/khalila/Desktop/wach%20TV%20site/index%202.html" target="_blank">Qui somme-nous</a></li>
+               <li><a href="#" target="_blank">Mentions légales</a></li>
+               <li><a href="#" target="_blank">CGV</a></li>
+               <li><a href="#" target="_blank">CGU</a></li>
+             </ul>
+             <br>
+             <p class="titre">Nos partenaires</p>
+             <ul>
+                {% for p in partenaires %}
+               <li><a href="{{p.siteWeb}}" target="_blank">{{p.partenaires}}</a></li>
+                {% endfor %}
+               </ul>
+             <br>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+             <p class="titre" target="_blank">Nos thèmes</p>
+             <ul>
+                {% for theme in themes %}
+               <li><a href="{{path('articles_by_theme',{'theme':theme.id})}}" target="_blank">{{theme.nom}}</a></li>
+               {% endfor %}
+             </ul>
+           </div>
+           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+             <p class="titre">Contactez-nous</p>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.567846450357!2d-7.6571843152009595!3d33.51261898075621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2bdb7d77205%3A0x7af100b2ef4330f6!2sTelecontact!5e0!3m2!1sar!2s!4v1498662660590" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+             <p class="Adresse">Adresse : Business Center Sidi Maârouf, Lotissement Medersa n°1, Immeuble 1, 2ème Etage Zone Indus. Sidi Maârouf. Casablanca</p>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="container" id="copyrightFooter">
+       <div class="row">
+         <div class="col-md-3">
+           <small class="text-muted">© 2018 TELECONTACT</small>
+         </div>
+         <div class="col-md-6">
+         </div>
+         <div class="col-md-3">
+           <small class="text-muted">Mentions légales / Politique de Confidentialité</small>
+         </div>
+       </div>
+     </div>
+   </footer>

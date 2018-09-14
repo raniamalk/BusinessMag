@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hab
  *
- * @ORM\Table()
+ * @ORM\Table("hab")
  * @ORM\Entity(repositoryClass="BusinessMag\MagBundle\Entity\HabRepository")
  */
 class Hab

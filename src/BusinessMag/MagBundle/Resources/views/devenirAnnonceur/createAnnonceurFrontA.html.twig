@@ -1,0 +1,221 @@
+{% extends '::front.html.twig' %}
+
+  {% block body %}
+
+
+
+   <div class="container-autofluid" > 
+
+    <!-- debut de recherche -->
+
+
+
+
+
+
+
+
+
+    <!-- fin rechereche  -->
+     <br>
+    <section id="fond-7" align="center">
+        <div class="container" id="content-4">
+            <div class="row">
+              <div class="col-md-12 col-sm-12  " align="center">    
+              </div>
+            </div>
+        </div>
+    </section>
+    
+ 	<div class="row">
+ 		<div class="col-md-4"></div>
+ 		<div class="col-md-4" style="padding: 1% 1% 1% 1%;background-color:black;color: white;text-align: center;font-weight: bold;"><span>Devenir Annonceur</span></div>
+ 		<div class="col-md-4"></div>
+
+ 	</div>
+ 
+<br>
+
+<!-- formualire -->
+ 	<div class="row">
+ 		<div class="col-md-3"></div>
+ 		<div class="col-md-6">
+ 		   		  
+   
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="nom">Nom & Prénom</label>
+    <div class="col-sm-8">
+     {{form_widget(form.nom,{'label':'','id':'nom','attr': {'class':'form-control'}})}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="fonction">Fonction</label>
+    <div class="col-sm-8"> 
+      {{form_widget(form.fonction, {'label':'','id':'fonction', 'attr': {'class':'form-control'}})}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="telPerso">Téléphone</label>
+    <div class="col-sm-8"> 
+      {{form_widget(form.telPerso,{'label':'','id':'telPerso', 'attr': {'class':'form-control'}})}}
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="emailPerso">Email</label>
+    <div class="col-sm-8"> 
+      {{form_widget(form.emailPerso,{'label':'','id':'emailPerso', 'attr': {'class':'form-control'}})}}
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="raisonSocial">Raison Sociale</label>
+    <div class="col-sm-8"> 
+      {{form_widget(form.raisonSocial,{'label':'', 'id':'raisonSocial','attr': {'class':'form-control'}})}}
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="siteWeb">Site web</label>
+    <div class="col-sm-8"> 
+      {{form_widget(form.siteWeb,{'label':'','id':'siteWeb','attr': {'class':'form-control'}})}}
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="telPro">Téléphone entreprise</label>
+    <div class="col-sm-8"> 
+      {{form_widget(form.telPro,{'label':'','id':'telPro','attr': {'class':'form-control'}})}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="emailPro">Email entreprise</label>
+    <div class="col-sm-8"> 
+      {{form_widget(form.emailPro,{'label':'','id':'emailPro', 'attr': {'class':'form-control'}})}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="visibilite">Visibilité</label>
+   <div class=" checkbox col-sm-8"> 
+    <label>
+      {{form_widget(form.pageAcc,{'label':'','id':'pageAcc','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}} <b>Page d'accueil</b>
+    </label>
+    </div>
+  </div> 
+
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="article"></label>
+   <div class="col-sm-8 checkbox"> 
+    <label>
+      {{form_widget(form.habillageAcc,{'label':'','id':'habillageAcc','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}}Habillage
+      </label>
+
+          <div class="" style="float: left;margin-right: 20%;"> <label>
+      {{form_widget(form.banniereAcc,{'label':'','id':'banniereAcc','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}}Bannière
+      </label>
+    </div>
+
+    </div>
+  </div>
+
+
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="pageTheme"></label>
+    <div class=" checkbox col-sm-8"> 
+    <label>
+      {{form_widget(form.pageTheme,{'label':'','id':'pageTheme','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}} <b>Page Thème</b>
+    </label>
+    </div>
+  </div> 
+    
+      <div class="form-group">
+    <label class="control-label col-sm-4" for="banniereThe"></label>
+   <div class="col-sm-8 checkbox"> 
+    <label>
+      {{form_widget(form.banniereThe,{'label':'','id':'banniereThe','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}}Bannière
+      </label>
+
+          <div class="" style="float: left;margin-right: 20%;"> <label>
+      {{form_widget(form.vignetteThe,{'label':'','id':'vignetteThe','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}}Vignette
+      </label>
+    </div>
+
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="sponsTheme"></label>
+    <div class=" checkbox col-sm-8"> 
+    <label>
+       <br>
+    {% for theme in themes|slice(6,13) %}
+    <label class="checkbox-inline">
+        <input id="sponsTheme" class="sponsTheme"  type="checkbox" name="businessmag_magbundle_devenir_annonceur[sponsTheme]" 
+        id="sponsTheme" value="{{ theme.id }}"/>&nbsp; &nbsp;{{ theme.nom }}
+    </label><br>
+    {% endfor %}
+
+    </label>
+   <div class="" style="float: left;margin-right: 20%;"> 
+    <span style="color: red;">Sponsoriser un thème : </span><br>
+        {% for theme in themes|slice(0,6) %}
+    <label class="checkbox-inline">
+        <input id="sponsTheme" class="sponsTheme"  type="checkbox" name="businessmag_magbundle_devenir_annonceur[sponsTheme]" 
+        id="sponsTheme" value="{{ theme.id }}"/>&nbsp; &nbsp;{{ theme.nom }}
+    </label><br>
+    {% endfor %}
+   </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="pageArticle"></label>
+    <div class=" checkbox col-sm-8"> 
+    <label>
+      {{form_widget(form.pageArticle,{'label':'','id':'pageArticle','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}} <b>Page article</b>
+    </label>
+    </div>
+  </div>
+  
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="banniereArt"></label>
+   <div class="col-sm-8 checkbox"> 
+    <label>
+      {{form_widget(form.banniereArt,{'label':'','id':'banniereArt','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}}Bannière
+      </label>
+
+          <div class="" style="float: left;margin-right: 20%;"> <label>
+      {{form_widget(form.vignetteArt,{'label':'','id':'vignetteArt','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}}Vignette
+      </label>
+    </div>
+
+    </div>
+  </div>
+  
+
+  <div class="form-group">
+    <span style="color: red">choisir le thème de l'article : </span>
+    <label class="control-label col-sm-4" for="artTheme"></label>
+    <div class=" checkbox col-sm-8"> 
+    <label>
+      {{form_widget(form.artTheme,{'label':'','id':'artTheme','attr': {'class':'form-control checkbox-pageAcc','style':'width: 15px;height: 15px;'}})}} <b>artTheme</b>
+    </label>
+    </div>
+  </div>
+  
+ 
+  <div class="form-group"> 
+    <div class="col-md-10"></div>
+    <div class="col-sm-2">
+      <button type="submit" class="btn btn-default" style="background-color:yellow">Envoyer</button>
+    </div>
+  </div>
+   {{form_end(form)}} 
+       <!-- fin formulaire -->   
+
+ 	    </div>
+ 	
+ 	</div>
+ </div>      
+  
+
+  {% endblock %}
