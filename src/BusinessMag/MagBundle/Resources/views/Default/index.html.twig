@@ -1,24 +1,24 @@
 {% extends '::front.html.twig' %}
 
         {% block body %}
-      
-{% set trans_day_hash = { 
-        "January": "Janvier", 
-        "February": "F�vrier", 
-        "March": "Mars", 
-        "April": "Avril", 
-        "May": "Mai", 
-        "June": "Juin", 
+
+{% set trans_day_hash = {
+        "January": "Janvier",
+        "February": "F�vrier",
+        "March": "Mars",
+        "April": "Avril",
+        "May": "Mai",
+        "June": "Juin",
         "July": "Juillet",
         "August":"Ao�t",
         "September":"Septembre",
         "October":"Octobre",
         "November":"Novembre",
         "December":"D�cembre",
-        
 
-              
-    } 
+
+
+    }
 %}
 
 <!-- carousel -->
@@ -30,12 +30,12 @@
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
-      
+
         </ol>
         <!-- Wrapper for carousel items -->
         <div class="carousel-inner">
           {% for   slide in slideArticles %}
-        <div class="item test" 
+        <div class="item test"
     style="background-image:url('{{asset('uploads/'~ slide.path)}}')">
               <div class="container">
                 <div class="row">
@@ -51,8 +51,8 @@
                 </div>
               </div>
             </div>
-          {% endfor %}           
-          
+          {% endfor %}
+
         </div>
         <!-- Carousel controls -->
         <a class="carousel-control left" href="#myCarousel" data-slide="prev">
@@ -96,7 +96,7 @@
             <span class="glyphicon glyphicon-time"></span>
           </div>
           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 date">
-       
+
             <p class="date-article">Post&eacute le {{article.createdAt|date('d')}} {{trans_day_hash[article.createdAt|date('F')]}} {{article.createdAt|date('Y')}}</p>
             <div class="text-article" style="display: none;">{{article.texteArticle|raw}}</div>
           </div>
@@ -120,7 +120,7 @@
   </div>
 </div>
 
-
+<!-- khalila -->
 
 <!-- grille video -->
 
@@ -177,7 +177,7 @@
                   /* $( ".glyphicon-print" ).click(function() {
 
   var vars  =$(this).attr('name');
-  
+
   var dateArticle  =$(this).parentsUntil(".well").find( ".date-article").text();
   var titleArticle =$(this).closest(".well").find(".title-intro").text();
   var texteIntro=$(this).closest(".well").find(".texte-intro").text();
@@ -185,25 +185,19 @@
 
   var imprimer=titleArticle+'<br><br>'+texteIntro+'<br><br>'+textArticle+'<br><br>'+dateArticle;
 printIt(imprimer);
-  
+
 });*/
-       
-                 
+
+
                 // var impression=title+'<br><br>'+theme+'<br><br>'+texteIntro;
-                 
+
 
 /*$(function() {
   var test=$('#test').innerHtml();
-  
+
 })*/
-           
-        
+
+
         </script>
 
 {% endblock %}
-
-
-
-
-
-
